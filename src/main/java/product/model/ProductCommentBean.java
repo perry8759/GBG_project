@@ -45,6 +45,11 @@ public class ProductCommentBean implements Serializable {
 	private ManageStatusBean manage_status_id;
 	
 	
+	//Constructor
+	public ProductCommentBean() {
+
+	}
+
 	public Integer getComment_id() {
 		return comment_id;
 	}

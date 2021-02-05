@@ -21,6 +21,12 @@ public class CustomerCategoryBean implements Serializable {
 	@NotNull
 	private String customer_category_name;
 	
+	
+	//Constructor
+	public CustomerCategoryBean() {
+
+	}
+	
 	public Integer getCustomer_category_id() {
 		return customer_category_id;
 	}

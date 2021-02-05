@@ -30,6 +30,11 @@ public class ProductPicBean implements Serializable {
 	private Blob product_pic_img;
 	private Integer product_pic_seq;
 	
+	
+	//Constructor
+	public ProductPicBean() {
+
+	}
 	public Integer getProduct_pic_id() {
 		return product_pic_id;
 	}

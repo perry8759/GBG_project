@@ -21,6 +21,11 @@ public class ProductStausBean implements Serializable {
 	@NotNull
 	private String product_name;
 	
+	//Constructor
+	public ProductStausBean() {
+
+	}
+	
 	public Integer getProduct_st() {
 		return product_st;
 	}

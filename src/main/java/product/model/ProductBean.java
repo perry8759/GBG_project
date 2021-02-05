@@ -48,6 +48,13 @@ public class ProductBean implements Serializable {
 	private Integer product_purchases;
 	@NotNull
 	private Double average_score;
+	
+	
+	//Constructor
+	public ProductBean() {
+
+	}
+	
 	public Integer getProduct_id() {
 		return product_id;
 	}

@@ -31,6 +31,10 @@ public class ProductDetailBean implements Serializable {
 	@NotNull
 	private Integer product_stock;
 	
+	//Constructor
+	public ProductDetailBean() {
+
+	}
 	public Integer getProduct_detail_id() {
 		return product_detail_id;
 	}
