@@ -17,7 +17,7 @@ public class ManageStatusBean implements Serializable{
 	private String manage_status_name;
 	
 	
-	
+	//ManageStatusBean
 	public ManageStatusBean() {
 
 	}

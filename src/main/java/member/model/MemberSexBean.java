@@ -16,7 +16,11 @@ public class MemberSexBean implements Serializable{
 	private Integer member_sex_id;
 	private String member_sex_name;
 	
-	
+	//ManageStatusBean
+	public MemberSexBean() {
+
+	}
+
 	public MemberSexBean(String member_sex_name) {
 		super();
 		this.member_sex_name = member_sex_name;

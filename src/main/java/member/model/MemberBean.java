@@ -48,6 +48,12 @@ public class MemberBean implements Serializable{
 	@JoinColumn(name="member_perm_id")
 	private MemberPermBean member_perm_id;
 	
+	
+	//ManageStatusBean
+	public MemberBean() {
+
+	}
+
 //	//與ProductCommentBean雙向關聯
 //	@OneToMany(mappedBy = "member_id", cascade = CascadeType.ALL)
 //	List<ProductCommentBean> ProductCommentBean = new ArrayList<ProductCommentBean>();
