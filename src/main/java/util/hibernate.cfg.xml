@@ -7,7 +7,7 @@
 		<!-- 1. SQL方言與提供連結資料庫所需資訊(透過JDBC API來連結)之設定方式 -->
 		<property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
 		<property name="connection.username">root</property>
-		<property name="connection.password">admin</property>
+		<property name="connection.password">9876543210</property>
 		<property name="connection.url">jdbc:mysql://localhost:3306/GBGBase?useUnicode=yes&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=Asia/Taipei&amp;allowPublicKeyRetrieval=true</property>
 		<!-- 2. 其他與資料存取有關的設定 -->
 		<!-- SQL方言，設定是MySQL8Dialect -->

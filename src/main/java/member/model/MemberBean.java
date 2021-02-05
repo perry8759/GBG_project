@@ -34,7 +34,6 @@ public class MemberBean implements Serializable{
 	private String member_cp_name;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@Column(name="member_sex_id")
 	@JoinColumn(name="member_sex_id")
 	private MemberSexBean member_sex_id;
 	private String member_email;
