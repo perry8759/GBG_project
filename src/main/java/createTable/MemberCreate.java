@@ -12,7 +12,7 @@ import member.model.NewsBean;
 import util.HibernateUtils;
 
 public class MemberCreate {
-
+	//fff
 	public static void main(String[] args) {
 		MemberBean member = new MemberBean();
 		
