@@ -1,0 +1,74 @@
+//servlet
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+//		List<ACT_TYPE> products = new ArrayList<ACT_TYPE>();
+//		products.add(new ACT_TYPE(1, "name 1"));
+//		products.add(new ACT_TYPE(2, "name 2"));
+//		products.add(new ACT_TYPE(3, "name 3"));
+		request.setCharacterEncoding("UTF-8");
+	    response.setContentType("application/json; charset=utf-8");
+		GsonBuilder gsonBuilder=new GsonBuilder();
+		
+		DOSDao  rs = new DOSDao();
+        List<DOS> dos = rs.select();
+        System.out.println(dos);
+        Gson gson=gsonBuilder.registerTypeAdapter(DOS.class, new dosAdapter()).create();
+        response.setContentType("text/html;charset=UTF-8");
+		response.getWriter().write(gson.toJson(dos));
+	}
+
+
+
+//json序列化
+        public class  dosAdapter implements JsonSerializer<DOS>{
+
+		@Override
+		public JsonElement serialize(DOS dos, Type type, JsonSerializationContext jsc) {
+			JsonObject jsonObject=new JsonObject();
+			jsonObject.addProperty("ID",dos.getDOS_ADDR());
+			jsonObject.addProperty("NAME",dos.getDOS_NAME());
+			JsonArray jsonObject1=new JsonArray();
+			for(DOS_PICTURE dosp   :dos.getDos_picture()) {
+				jsonObject1.add(dosp.getDOS_PICTURE_ID());
+			}			
+			jsonObject.add("dos_pic_id", jsonObject1);			
+		    return jsonObject;
+		}	
+    }
+
+
+//jsp ajax(無刷新效果)
+<script type="text/javascript">
+    window.onload=ShowHello;
+    setInterval(ShowHello, 3000);
+    function ShowHello(){
+		
+			$.ajax({
+				type : 'GET',
+				url : '${pageContext.request.contextPath }/ajax',
+				headers : {
+					Accept : "application/json; charset=utf-8",
+					"Content-Type" : "application/json; charset=utf-8"
+				},
+				dataType: "text",  //返回的資料類型
+				 timeout: 1500, 
+				async: false, // 異步請求
+				success : function(result) {
+					var dos = $.parseJSON(result);
+					console.log(dos);
+					var s = '';
+					for(var i = 0; i < dos.length; i++) {
+						s += 'Id: ' + dos[i].ID + '<br>';
+						s += 'Name: ' + dos[i].NAME + '<br>';
+						for(var y=0;y<dos[i].dos_pic_id.length;y++){
+						    s += 'dos_pic_id: ' + dos[i].dos_pic_id[y]+ '<br>';
+						}
+						s += '----------------------<br>';
+					}
+					$('#result').html(s);
+					
+				}
+			});
+	}
+</script>
