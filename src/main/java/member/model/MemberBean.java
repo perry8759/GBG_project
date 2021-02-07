@@ -4,21 +4,16 @@ import java.io.Serializable;
 import java.sql.Blob;
 import java.sql.Date;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
 
+import javax.annotation.Generated;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import product.model.ProductCommentBean;
 
 @Entity
 @Table(name="member")
@@ -34,7 +29,7 @@ public class MemberBean implements Serializable{
 	private String member_cp_name;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="member_sex_id")
+	@JoinColumn(name="member_sex_i")
 	private MemberSexBean member_sex_id;
 	private String member_email;
 	private String member_mobile_phone;
@@ -48,22 +43,32 @@ public class MemberBean implements Serializable{
 	@JoinColumn(name="member_perm_id")
 	private MemberPermBean member_perm_id;
 	
-	
-	//ManageStatusBean
 	public MemberBean() {
-
+		
 	}
 
-//	//與ProductCommentBean雙向關聯
-//	@OneToMany(mappedBy = "member_id", cascade = CascadeType.ALL)
-//	List<ProductCommentBean> ProductCommentBean = new ArrayList<ProductCommentBean>();
-//	public List<ProductCommentBean> getProductCommentBean() {
-//		return ProductCommentBean;
-//	}
-//	public void setProductCommentBean(List<ProductCommentBean> productCommentBean) {
-//		ProductCommentBean = productCommentBean;
-//	}
-	
+	public MemberBean(Integer member_id, String member_account, String member_pw, String member_real_name,
+			String member_tax_id_number, String member_user_name, String member_cp_name, MemberSexBean member_sex_id,
+			String member_email, String member_mobile_phone, String member_fixed_line_telephone, Date member_birthday,
+			String member_address, Blob member_image, Timestamp member_register_date, MemberPermBean member_perm_id) {
+		super();
+		this.member_id = member_id;
+		this.member_account = member_account;
+		this.member_pw = member_pw;
+		this.member_real_name = member_real_name;
+		this.member_tax_id_number = member_tax_id_number;
+		this.member_user_name = member_user_name;
+		this.member_cp_name = member_cp_name;
+		this.member_sex_id = member_sex_id;
+		this.member_email = member_email;
+		this.member_mobile_phone = member_mobile_phone;
+		this.member_fixed_line_telephone = member_fixed_line_telephone;
+		this.member_birthday = member_birthday;
+		this.member_address = member_address;
+		this.member_image = member_image;
+		this.member_register_date = member_register_date;
+		this.member_perm_id = member_perm_id;
+	}
 
 	public Integer getMember_id() {
 		return member_id;
@@ -192,7 +197,5 @@ public class MemberBean implements Serializable{
 	public void setMember_perm_id(MemberPermBean member_perm_id) {
 		this.member_perm_id = member_perm_id;
 	}
-	
-	
 
 }

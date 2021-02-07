@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="/fragment/topMVC.jsp" />
      <c:set var="funcName" value="LOG" scope="session"/>
       <Form action="<c:url value='login.do' />" method="POST" name="loginForm">
             帳號:<input  type="text" name="userId" size="10" 

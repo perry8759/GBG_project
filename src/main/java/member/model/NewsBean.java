@@ -20,9 +20,9 @@ public class NewsBean implements Serializable{
 	private Timestamp news_release_time;
 	private String news_content;
 	
-	//Constructor
+	
 	public NewsBean() {
-		
+		super();
 	}
 	public Integer getNews_id() {
 		return news_id;
