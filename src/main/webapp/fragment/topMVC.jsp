@@ -11,6 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<!-- 導覽列bootstrap -->
 <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
@@ -38,10 +39,19 @@
             </c:if>
             <li><a href="<c:url value='/DOS/DOS_Index' />">查詢所有場地</a></li>
             <li><a href="<c:url value='/ACT/HelloACTService' />">查詢所有活動</a></li>
-            <c:if test="${! empty LoginOK}">
-			<li><a href="#">HI! ${LoginOK.member_account }</a></li>
-			</c:if>
-		    
+            
+		    <c:choose>
+		          <c:when test="${LoginOK.member_perm_id.member_perm_id==2 }">
+		             <li><a href="#">HI主辦方! ${LoginOK.member_account }-管理活動</a></li>
+		          </c:when>
+		          <c:when test="${LoginOK.member_perm_id.member_perm_id==1 }">
+		             <li><a href="#">HI管理員! ${LoginOK.member_account }-管理活動</a></li>
+		             <li><a href="<c:url value='/DOS/DOS_management/list' />">管理場地</a></li>
+		          </c:when>
+		          <c:when test="${LoginOK.member_perm_id.member_perm_id==3 }">
+		             <li><a href="#">HI一般會員! ${LoginOK.member_account }</a></li>		         
+		          </c:when>		          
+		    </c:choose>
           </ul>
         </div>
       </div>
