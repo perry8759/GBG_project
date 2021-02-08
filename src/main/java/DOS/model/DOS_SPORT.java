@@ -23,12 +23,13 @@ public class DOS_SPORT implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer DOS_SPORT_ID;
 	private String DOS_SPORT_NAME;
-	
+	//雙向一對多
 	@OneToMany(mappedBy = "dos_sport_id", cascade = CascadeType.ALL)
 	//對DOS新增欄位外鍵
 	private Set<DOS> dos = new HashSet<>();
+	//雙向一對多
 	@OneToMany(mappedBy = "dos_sport", cascade = CascadeType.ALL)
-	//對DOS新增欄位外鍵
+	//對ACT新增欄位外鍵
 	private Set<ACT> act = new HashSet<>();
 	public Set<DOS> getDos() {
 		return dos;
