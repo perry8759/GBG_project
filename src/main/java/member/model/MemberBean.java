@@ -4,6 +4,10 @@ import java.io.Serializable;
 import java.sql.Blob;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 
 import javax.annotation.Generated;
 import javax.persistence.CascadeType;
@@ -13,11 +17,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import product.model.ProductBean;
+import product.model.ProductCommentBean;
+import shoppingCart.Model.FavoriteListBean;
+import shoppingCart.Model.OrdersBean;
+import shoppingCart.Model.ShoppingCartBean;
+
 @Entity
-@Table(name="member")
-public class MemberBean implements Serializable{
+@Table(name = "member")
+public class MemberBean implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer member_id;
@@ -27,9 +38,9 @@ public class MemberBean implements Serializable{
 	private String member_tax_id_number;
 	private String member_user_name;
 	private String member_cp_name;
-	
+
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="member_sex_i")
+	@JoinColumn(name = "member_sex_i")
 	private MemberSexBean member_sex_id;
 	private String member_email;
 	private String member_mobile_phone;
@@ -38,13 +49,29 @@ public class MemberBean implements Serializable{
 	private String member_address;
 	private Blob member_image;
 	private Timestamp member_register_date;
-	
+
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="member_perm_id")
+	@JoinColumn(name = "member_perm_id")
 	private MemberPermBean member_perm_id;
-	
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "member_id")
+	Set<ProductCommentBean> ProductCommentBean = new LinkedHashSet<>();
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "member_id")
+	Set<ShoppingCartBean> shoppingCartBean = new LinkedHashSet<>();
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "member_id")
+	Set<FavoriteListBean> favoriteListBean = new LinkedHashSet<>();
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "member_id")
+	Set<OrdersBean> ordersBean = new LinkedHashSet<>();
+
 	public MemberBean() {
-		
+
 	}
 
 	public MemberBean(Integer member_id, String member_account, String member_pw, String member_real_name,
@@ -69,6 +96,35 @@ public class MemberBean implements Serializable{
 		this.member_register_date = member_register_date;
 		this.member_perm_id = member_perm_id;
 	}
+
+//	public MemberBean(Integer member_id, String member_account, String member_pw, String member_real_name,
+//			String member_tax_id_number, String member_user_name, String member_cp_name, MemberSexBean member_sex_id,
+//			String member_email, String member_mobile_phone, String member_fixed_line_telephone, Date member_birthday,
+//			String member_address, Blob member_image, Timestamp member_register_date, MemberPermBean member_perm_id,
+//			Set<product.model.ProductCommentBean> productCommentBean, Set<ShoppingCartBean> shoppingCartBean,
+//			Set<FavoriteListBean> favoriteListBean, Set<OrdersBean> ordersBean) {
+//		super();
+//		this.member_id = member_id;
+//		this.member_account = member_account;
+//		this.member_pw = member_pw;
+//		this.member_real_name = member_real_name;
+//		this.member_tax_id_number = member_tax_id_number;
+//		this.member_user_name = member_user_name;
+//		this.member_cp_name = member_cp_name;
+//		this.member_sex_id = member_sex_id;
+//		this.member_email = member_email;
+//		this.member_mobile_phone = member_mobile_phone;
+//		this.member_fixed_line_telephone = member_fixed_line_telephone;
+//		this.member_birthday = member_birthday;
+//		this.member_address = member_address;
+//		this.member_image = member_image;
+//		this.member_register_date = member_register_date;
+//		this.member_perm_id = member_perm_id;
+//		ProductCommentBean = productCommentBean;
+//		this.shoppingCartBean = shoppingCartBean;
+//		this.favoriteListBean = favoriteListBean;
+//		this.ordersBean = ordersBean;
+//	}
 
 	public Integer getMember_id() {
 		return member_id;
@@ -196,6 +252,38 @@ public class MemberBean implements Serializable{
 
 	public void setMember_perm_id(MemberPermBean member_perm_id) {
 		this.member_perm_id = member_perm_id;
+	}
+
+	public Set<ProductCommentBean> getProductCommentBean() {
+		return ProductCommentBean;
+	}
+
+	public void setProductCommentBean(Set<ProductCommentBean> productCommentBean) {
+		ProductCommentBean = productCommentBean;
+	}
+
+	public Set<ShoppingCartBean> getShoppingCartBean() {
+		return shoppingCartBean;
+	}
+
+	public void setShoppingCartBean(Set<ShoppingCartBean> shoppingCartBean) {
+		this.shoppingCartBean = shoppingCartBean;
+	}
+
+	public Set<FavoriteListBean> getFavoriteListBean() {
+		return favoriteListBean;
+	}
+
+	public void setFavoriteListBean(Set<FavoriteListBean> favoriteListBean) {
+		this.favoriteListBean = favoriteListBean;
+	}
+
+	public Set<OrdersBean> getOrdersBean() {
+		return ordersBean;
+	}
+
+	public void setOrdersBean(Set<OrdersBean> ordersBean) {
+		this.ordersBean = ordersBean;
 	}
 
 }

@@ -7,7 +7,8 @@
 		<!-- 1. SQL方言與提供連結資料庫所需資訊(透過JDBC API來連結)之設定方式 -->
 		<property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
 		<property name="connection.username">root</property>
-		<property name="connection.password">jimdark123</property>
+		<!-- <property name="connection.password">jimdark123</property> -->
+		<property name="connection.password">9876543210</property>
 		<property name="connection.url">jdbc:mysql://localhost:3306/GBGBase?useUnicode=yes&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=Asia/Taipei&amp;allowPublicKeyRetrieval=true</property>
 		<!-- 2. 其他與資料存取有關的設定 -->
 		<!-- SQL方言，設定是MySQL8Dialect -->
@@ -19,7 +20,7 @@
 		<!-- 將顯示的SQL排版，方便觀看 -->
 		<property name="format_sql">true</property>
 		<property name="current_session_context_class">thread</property>
-		
+
 		<!-- 定義程式交易管理的類型，本範例使用JDBC Transaction -->
 		<property name="transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
 		<!-- hibernate 相關效能設定 -->
@@ -32,7 +33,7 @@
 		<mapping class="member.model.MemberSexBean" />
 		<mapping class="member.model.MemberBean" />
 		<mapping class="member.model.NewsBean" />
-		
+
 		<!-- 朱 -->
 		<mapping class="DOS.model.DOS_SPORT"></mapping>
 		<mapping class="DOS.model.DOS"></mapping>
@@ -42,5 +43,19 @@
 		<mapping class="ACT.model.ACT_RULE"></mapping>
 		<mapping class="ACT.model.ACT_RFORM"></mapping>
 		<mapping class="ACT.model.ACT_QES"></mapping>
+		
+		<mapping class="product.model.ProductBean" />
+		<mapping class="product.model.CustomerCategoryBean" />
+		<mapping class="product.model.ProductStausBean" />
+		<mapping class="product.model.ProductPicBean" />
+		<mapping class="product.model.ProductCategoryBean" />
+		<mapping class="product.model.ProductDetailBean" />
+		<mapping class="product.model.ProductCommentBean" />
+
+		<mapping class="shoppingCart.Model.ShoppingCartBean" />
+		<mapping class="shoppingCart.Model.OrdersBean" />
+		<mapping class="shoppingCart.Model.OrderSatusBean" />
+		<mapping class="shoppingCart.Model.OrderDetailsBean" />
+		<mapping class="shoppingCart.Model.FavoriteListBean" />
 	</session-factory>
 </hibernate-configuration>

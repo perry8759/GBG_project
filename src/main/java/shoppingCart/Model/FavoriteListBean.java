@@ -25,31 +25,24 @@ public class FavoriteListBean implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer favorite_id;
 
-//	private Integer member_id;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="member_id")
+	private MemberBean memberBean;
 	
-	@OneToMany(mappedBy="favorite_list", cascade={CascadeType.ALL}) 
-	@JoinColumn(name="member_id", nullable=false)
-	private Set<MemberBean> memberBean = new LinkedHashSet<>();
-
-	Integer product_id;
-	@OneToMany(cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="product_id")
-	private Set<ProductBean> productBean = new LinkedHashSet<>();
+	private ProductBean productBean;
 
 	// 要有預設建構子
 	public FavoriteListBean() {
 	}
 
-
-	public FavoriteListBean(Integer favorite_id, Set<MemberBean> memberBean, Integer product_id,
-			Set<ProductBean> productBean) {
+	public FavoriteListBean(Integer favorite_id, MemberBean memberBean, ProductBean productBean) {
 		super();
 		this.favorite_id = favorite_id;
 		this.memberBean = memberBean;
-		this.product_id = product_id;
 		this.productBean = productBean;
 	}
-
 
 	public Integer getFavorite_id() {
 		return favorite_id;
@@ -59,32 +52,19 @@ public class FavoriteListBean implements Serializable {
 		this.favorite_id = favorite_id;
 	}
 
-
-	public Integer getProduct_id() {
-		return product_id;
-	}
-
-	public void setProduct_id(Integer product_id) {
-		this.product_id = product_id;
-	}
-
-
-	public Set<MemberBean> getMemberAnno() {
+	public MemberBean getMemberBean() {
 		return memberBean;
 	}
 
-
-	public void setMemberAnno(Set<MemberBean> memberBean) {
+	public void setMemberBean(MemberBean memberBean) {
 		this.memberBean = memberBean;
 	}
 
-
-	public Set<ProductBean> getProductAnno() {
+	public ProductBean getProductBean() {
 		return productBean;
 	}
 
-
-	public void setProductAnno(Set<ProductBean> productBean) {
+	public void setProductBean(ProductBean productBean) {
 		this.productBean = productBean;
 	}
 

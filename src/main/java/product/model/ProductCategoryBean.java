@@ -1,15 +1,24 @@
 package product.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.sun.istack.NotNull;
+
+import shoppingCart.Model.OrderDetailsBean;
 
 @Entity
 @Table(name="product_category")
@@ -20,24 +29,44 @@ public class ProductCategoryBean implements Serializable {
 	@NotNull
 	private String category_name;
 	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "category_id")
+//	private List<ProductBean> productBean = new ArrayList<>();
+	private Set<ProductBean> productBean = new LinkedHashSet<>();
 	
-	//Constructor
+	// 要有預設建構子
 	public ProductCategoryBean() {
-	
 	}
-	
+
+	public ProductCategoryBean(Integer category_id, String category_name, Set<ProductBean> productBean) {
+		super();
+		this.category_id = category_id;
+		this.category_name = category_name;
+		this.productBean = productBean;
+	}
+
 	public Integer getCategory_id() {
 		return category_id;
 	}
+
 	public void setCategory_id(Integer category_id) {
 		this.category_id = category_id;
 	}
+
 	public String getCategory_name() {
 		return category_name;
 	}
+
 	public void setCategory_name(String category_name) {
 		this.category_name = category_name;
 	}
-	
+
+	public Set<ProductBean> getProductBean() {
+		return productBean;
+	}
+
+	public void setProductBean(Set<ProductBean> productBean) {
+		this.productBean = productBean;
+	}
 	
 }

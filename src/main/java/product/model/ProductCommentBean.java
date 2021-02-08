@@ -19,35 +19,45 @@ import member.model.ManageStatusBean;
 import member.model.MemberBean;
 
 @Entity
-@Table(name="product_comment")
+@Table(name = "product_comment")
 public class ProductCommentBean implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer comment_id;
-	
+
 	@ManyToOne
-	@JoinColumn(name="member_id")
-	private MemberBean member_id;
-	
-	@NotNull
+	@JoinColumn(name = "member_id")
+	private MemberBean memberBean;
+
+//	@NotNull
 	private Date comment_date;
-	
+
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="product_id")
-	private ProductBean product_id;
-	
+	@JoinColumn(name = "product_id")
+	private ProductBean productBean;
+
 	@NotNull
 	private Integer comment_value;
 	private Clob comment_comment;
-	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="manage_status_id")
-	private ManageStatusBean manage_status_id;
-	
-	
-	//Constructor
-	public ProductCommentBean() {
 
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "manage_status_id")
+	private ManageStatusBean manageStatusBean;
+
+	// 要有預設建構子
+	public ProductCommentBean() {
+	}
+
+	public ProductCommentBean(Integer comment_id, MemberBean memberBean, Date comment_date, ProductBean productBean,
+			Integer comment_value, Clob comment_comment, ManageStatusBean manageStatusBean) {
+		super();
+		this.comment_id = comment_id;
+		this.memberBean = memberBean;
+		this.comment_date = comment_date;
+		this.productBean = productBean;
+		this.comment_value = comment_value;
+		this.comment_comment = comment_comment;
+		this.manageStatusBean = manageStatusBean;
 	}
 
 	public Integer getComment_id() {
@@ -58,12 +68,12 @@ public class ProductCommentBean implements Serializable {
 		this.comment_id = comment_id;
 	}
 
-	public MemberBean getMember_id() {
-		return member_id;
+	public MemberBean getMemberBean() {
+		return memberBean;
 	}
 
-	public void setMember_id(MemberBean member_id) {
-		this.member_id = member_id;
+	public void setMemberBean(MemberBean memberBean) {
+		this.memberBean = memberBean;
 	}
 
 	public Date getComment_date() {
@@ -74,12 +84,12 @@ public class ProductCommentBean implements Serializable {
 		this.comment_date = comment_date;
 	}
 
-	public ProductBean getProduct_id() {
-		return product_id;
+	public ProductBean getProductBean() {
+		return productBean;
 	}
 
-	public void setProduct_id(ProductBean product_id) {
-		this.product_id = product_id;
+	public void setProductBean(ProductBean productBean) {
+		this.productBean = productBean;
 	}
 
 	public Integer getComment_value() {
@@ -98,14 +108,12 @@ public class ProductCommentBean implements Serializable {
 		this.comment_comment = comment_comment;
 	}
 
-	public ManageStatusBean getManage_status_id() {
-		return manage_status_id;
+	public ManageStatusBean getManageStatusBean() {
+		return manageStatusBean;
 	}
 
-	public void setManage_status_id(ManageStatusBean manage_status_id) {
-		this.manage_status_id = manage_status_id;
+	public void setManageStatusBean(ManageStatusBean manageStatusBean) {
+		this.manageStatusBean = manageStatusBean;
 	}
 
-	
-	
 }
