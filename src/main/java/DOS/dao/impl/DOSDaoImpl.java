@@ -3,11 +3,8 @@ package DOS.dao.impl;
 import java.util.List;
 import java.util.Vector;
 
-import javax.persistence.NoResultException;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 
 import DOS.dao.DOSDao;
 import DOS.model.DOS;
@@ -16,7 +13,7 @@ import util.HibernateUtils;
 
 public class DOSDaoImpl implements DOSDao{
 
-    SessionFactory factory=null;
+	SessionFactory factory=null;
 	
 	public DOSDaoImpl() {
 		factory=HibernateUtils.getSessionFactory();

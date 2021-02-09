@@ -38,7 +38,8 @@ public class MemberBean implements Serializable {
 	private String member_tax_id_number;
 	private String member_user_name;
 	private String member_cp_name;
-
+	
+	//單向多對一，可找到member_sex中對應之性別
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "member_sex_i")
 	private MemberSexBean member_sex_id;
@@ -49,11 +50,13 @@ public class MemberBean implements Serializable {
 	private String member_address;
 	private Blob member_image;
 	private Timestamp member_register_date;
-
+	
+	//單向多對一，可找到member_perm中對應之權限
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "member_perm_id")
 	private MemberPermBean member_perm_id;
-
+	
+	//雙向一對多，可以藉由會員找到商品評論
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "member_id")
 	Set<ProductCommentBean> ProductCommentBean = new LinkedHashSet<>();
