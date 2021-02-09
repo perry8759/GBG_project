@@ -5,6 +5,9 @@ import java.io.Serializable;
 import java.sql.Clob;
 import java.sql.Timestamp;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -14,6 +17,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -21,12 +26,15 @@ import javax.persistence.Table;
 import DOS.model.DOS;
 import DOS.model.DOS_PICTURE;
 import DOS.model.DOS_SPORT;
+import course.model.MatchBean;
+import course.model.MatchTeamBean;
+import member.model.MemberBean;
 
 
 
 @Entity
 @Table(name="ACT")
-public class ACT implements Serializable{
+public class ActBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -72,10 +80,25 @@ public class ACT implements Serializable{
 	@JoinColumn(name = "ACT_ID", referencedColumnName = "ACT_ID")
 	//對ACT_RFORM新增欄位外鍵，當活動刪除時需先將所有活動問答刪除
 	private Set<ACT_QES> act_qes = new HashSet<>();
-	public ACT() {
+	
+
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "act_id") //雙向一對多 (多個賽局)
+	List<MatchBean> matchs=new LinkedList<>();
+	
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "act_id") //雙向一對多 (多個報名隊伍)
+	List<MatchTeamBean> teams=new LinkedList<>();
+	
+	@ManyToMany(cascade = CascadeType.ALL) // 雙向多對多 (關注此活動的多個會員)
+	@JoinTable(	name = "act_follow",  //中介表格為 act_follow
+				joinColumns = { @JoinColumn(name="act_id",referencedColumnName = "act_id") }, 
+				inverseJoinColumns = { @JoinColumn(name="member_id",referencedColumnName = "member_id") })
+	private Set<MemberBean> followers=new LinkedHashSet<>();
+	
+
+	public ActBean() {
 		
 	}
-	public ACT(Integer aCT_ID, Integer mEMBER_ID, DOS dos_id, String aCT_TITLE, String aCT_DESC, Integer aCT_MAX_TEAM,
+	public ActBean(Integer aCT_ID, Integer mEMBER_ID, DOS dos_id, String aCT_TITLE, String aCT_DESC, Integer aCT_MAX_TEAM,
 			Integer aCT_MAX_PNUM, Timestamp aCT_SIGN_O, Timestamp aCT_SIGN_C, Timestamp aCT_RUN_O, Timestamp aCT_RUN_C,
 			Integer aCT_PAY, DOS_SPORT dos_sport, ACT_STATUS act_status, byte[] aCT_LOGO, Integer aCT_PNUM,
 			ACT_RULE act_rule, Clob aCT_NEWS,Set<ACT_RFORM> act_rform,Set<ACT_QES> act_qes) {
@@ -224,7 +247,24 @@ public class ACT implements Serializable{
 	
 	
 
-	
+	public List<MatchBean> getMatchs() {
+		return matchs;
+	}
+	public void setMatchs(List<MatchBean> matchs) {
+		this.matchs = matchs;
+	}
+	public List<MatchTeamBean> getTeams() {
+		return teams;
+	}
+	public void setTeams(List<MatchTeamBean> teams) {
+		this.teams = teams;
+	}
+	public Set<MemberBean> getFollowers() {
+		return followers;
+	}
+	public void setFollowers(Set<MemberBean> followers) {
+		this.followers = followers;
+	}
 	
 	
 

@@ -8,7 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import ACT.model.ACT;
+import ACT.model.ActBean;
 import ACT.model.ACT_QES;
 import ACT.model.ACT_RFORM;
 import ACT.model.ACT_RULE;
@@ -61,7 +61,7 @@ public class DOSACT_MAIN_INSERT {
 	    ACT_QES act_qes1=new ACT_QES(null,1,null);
 	    Set<ACT_QES> set_qes = new HashSet<>(Arrays.asList(act_qes,act_qes1));
 	    //活動資訊
-	    ACT act1=new ACT( null, 1, dos1,"xxx", "xxx", 8, 50, null, null, null,null, 500,dept1,act_status,null, 0,act_rule,null,set_form,set_qes);
+	    ActBean act1=new ActBean( null, 1, dos1,"xxx", "xxx", 8, 50, null, null, null,null, 500,dept1,act_status,null, 0,act_rule,null,set_form,set_qes);
 	    
         System.out.println("--------------------------------------");
         //並不會立即執行insert，適合長流程

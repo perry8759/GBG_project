@@ -8,7 +8,8 @@
 		<property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
 		<property name="connection.username">root</property>
 		<!-- <property name="connection.password">jimdark123</property> -->
-		<property name="connection.password">admin</property>
+		<!-- <property name="connection.password">admin</property> -->
+		<property name="connection.password">catbox123</property>
 		<property name="connection.url">jdbc:mysql://localhost:3306/GBGBase?useUnicode=yes&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=Asia/Taipei&amp;allowPublicKeyRetrieval=true</property>
 		<!-- 2. 其他與資料存取有關的設定 -->
 		<!-- SQL方言，設定是MySQL8Dialect -->
@@ -39,7 +40,7 @@
 		<mapping class="DOS.model.DOS"></mapping>
 		<mapping class="DOS.model.DOS_PICTURE"></mapping>
 		<mapping class="ACT.model.ACT_STATUS"></mapping>
-		<mapping class="ACT.model.ACT"></mapping>
+		<mapping class="ACT.model.ActBean"></mapping>
 		<mapping class="ACT.model.ACT_RULE"></mapping>
 		<mapping class="ACT.model.ACT_RFORM"></mapping>
 		<mapping class="ACT.model.ACT_QES"></mapping>
@@ -57,5 +58,11 @@
 		<mapping class="shoppingCart.Model.OrderSatusBean" />
 		<mapping class="shoppingCart.Model.OrderDetailsBean" />
 		<mapping class="shoppingCart.Model.FavoriteListBean" />
+		
+		<mapping class="course.model.MatchBean" />
+		<mapping class="course.model.MatchPairBean" />
+		<mapping class="course.model.MatchStatusBean" />
+		<mapping class="course.model.MatchTeamBean" />
+		<mapping class="course.model.RegsStatusBean" />
 	</session-factory>
 </hibernate-configuration>

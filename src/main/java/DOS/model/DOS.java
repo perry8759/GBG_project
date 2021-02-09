@@ -23,7 +23,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import ACT.model.ACT;
+import ACT.model.ActBean;
 
 @Entity
 @Table(name="DOS")
@@ -57,7 +57,7 @@ public class DOS implements Serializable{
 	//雙向一對多，可從場地找到目前正在進行的活動(改雙向map)
 	@OneToMany(mappedBy = "dos_id", cascade = CascadeType.ALL,fetch=FetchType.EAGER)
 	//對ACT新增欄位外鍵
-	private Set<ACT> act = new HashSet<>();
+	private Set<ActBean> act = new HashSet<>();
 	//雙向一對多，可從場地找到運動種類
 	@ManyToOne(cascade = CascadeType.ALL) 
 	@JoinColumn(name="dos_sport_id", nullable=false)
@@ -193,11 +193,11 @@ public class DOS implements Serializable{
 		this.dos_picture = dos_picture;
 	}
 
-	public Set<ACT> getAct() {
+	public Set<ActBean> getAct() {
 		return act;
 	}
 
-	public void setAct(Set<ACT> act) {
+	public void setAct(Set<ActBean> act) {
 		this.act = act;
 	}
 

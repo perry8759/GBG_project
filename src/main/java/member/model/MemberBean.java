@@ -16,10 +16,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import ACT.model.ActBean;
+import course.model.MatchTeamBean;
 import product.model.ProductBean;
 import product.model.ProductCommentBean;
 import shoppingCart.Model.FavoriteListBean;
@@ -73,6 +76,13 @@ public class MemberBean implements Serializable {
 	@JoinColumn(name = "member_id")
 	Set<OrdersBean> ordersBean = new LinkedHashSet<>();
 
+	
+	@ManyToMany(mappedBy = "members") // 雙向多對多 (此會員參與的多個隊伍)
+	private Set<MatchTeamBean> teams=new LinkedHashSet<>();
+	
+	@ManyToMany(mappedBy = "followers") // 雙向多對多 (此會員關注的多個活動)
+	private Set<ActBean> followActs=new LinkedHashSet<>();
+	
 	public MemberBean() {
 
 	}
@@ -288,5 +298,22 @@ public class MemberBean implements Serializable {
 	public void setOrdersBean(Set<OrdersBean> ordersBean) {
 		this.ordersBean = ordersBean;
 	}
+
+	public Set<MatchTeamBean> getTeams() {
+		return teams;
+	}
+
+	public void setTeams(Set<MatchTeamBean> teams) {
+		this.teams = teams;
+	}
+
+	public Set<ActBean> getFollowActs() {
+		return followActs;
+	}
+
+	public void setFollowActs(Set<ActBean> followActs) {
+		this.followActs = followActs;
+	}
+	
 
 }

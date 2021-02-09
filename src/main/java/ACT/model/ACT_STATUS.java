@@ -25,7 +25,7 @@ public class ACT_STATUS implements Serializable{
     private String ACT_STATUS_NAME;
     @OneToMany(mappedBy = "act_status", cascade = CascadeType.ALL)
 	//對ACT新增欄位外鍵(改雙向map)
-	private Set<ACT> act = new LinkedHashSet<>();
+	private Set<ActBean> act = new LinkedHashSet<>();
 	public ACT_STATUS() {
 		// TODO Auto-generated constructor stub
 	}
@@ -47,10 +47,10 @@ public class ACT_STATUS implements Serializable{
 	public void setACT_STATUS_NAME(String aCT_STATUS_NAME) {
 		ACT_STATUS_NAME = aCT_STATUS_NAME;
 	}
-	public Set<ACT> getAct() {
+	public Set<ActBean> getAct() {
 		return act;
 	}
-	public void setAct(Set<ACT> act) {
+	public void setAct(Set<ActBean> act) {
 		this.act = act;
 	}
     
