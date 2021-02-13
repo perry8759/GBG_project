@@ -63,6 +63,6 @@
 		<mapping class="course.model.MatchPairBean" />
 		<mapping class="course.model.MatchStatusBean" />
 		<mapping class="course.model.MatchTeamBean" />
-		<mapping class="course.model.RegsStatusBean" />
+		<mapping class="course.model.RegStatusBean" />
 	</session-factory>
 </hibernate-configuration>
