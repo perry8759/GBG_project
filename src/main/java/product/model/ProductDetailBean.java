@@ -30,6 +30,7 @@ public class ProductDetailBean implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer product_detail_id;
 
+	//雙向多對一，可以藉由商品詳細資料找到商品
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "product_id")
 	private ProductBean productBean;
@@ -40,32 +41,28 @@ public class ProductDetailBean implements Serializable {
 	private String product_size;
 	@NotNull
 	private Integer product_stock;
+	
+//	//雙向一對多，可以藉由商品詳細資料找到購物車 => 應為單向
+//	@OneToMany(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "product_detail_id")
+//	private Set<ShoppingCartBean> shoppingCartBean = new LinkedHashSet<>();
 
-//	================新增部分=================
-
+	//雙向一對多，可以藉由商品詳細資料找到訂單細項(才可知商品被購買次數)
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "product_detail_id")
-//	List<ShoppingCartBean> shoppingCartBean = new ArrayList<>();
-	private Set<ShoppingCartBean> shoppingCartBean = new LinkedHashSet<>();
-
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "product_detail_id")
-//	List<OrderDetailsBean> orderDetailsBean = new ArrayList<>();
 	private Set<OrderDetailsBean> orderDetailsBean = new LinkedHashSet<>();
 	
+	//單向一對多，可以藉由商品詳細資料找到商品照片
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "product_detail_id")
-//	List<ProductPicBean> productPicBean = new ArrayList<>();
 	private Set<ProductPicBean> productPicBean = new LinkedHashSet<>();
-
-//	================新增部分=================
 
 	// 要有預設建構子
 	public ProductDetailBean() {
 	}
 
 	public ProductDetailBean(Integer product_detail_id, ProductBean productBean, String product_color,
-			String product_size, Integer product_stock, Set<ShoppingCartBean> shoppingCartBean,
+			String product_size, Integer product_stock,
 			Set<OrderDetailsBean> orderDetailsBean, Set<ProductPicBean> productPicBean) {
 		super();
 		this.product_detail_id = product_detail_id;
@@ -73,7 +70,7 @@ public class ProductDetailBean implements Serializable {
 		this.product_color = product_color;
 		this.product_size = product_size;
 		this.product_stock = product_stock;
-		this.shoppingCartBean = shoppingCartBean;
+//		this.shoppingCartBean = shoppingCartBean;
 		this.orderDetailsBean = orderDetailsBean;
 		this.productPicBean = productPicBean;
 	}
@@ -118,13 +115,13 @@ public class ProductDetailBean implements Serializable {
 		this.product_stock = product_stock;
 	}
 
-	public Set<ShoppingCartBean> getShoppingCartBean() {
-		return shoppingCartBean;
-	}
-
-	public void setShoppingCartBean(Set<ShoppingCartBean> shoppingCartBean) {
-		this.shoppingCartBean = shoppingCartBean;
-	}
+//	public Set<ShoppingCartBean> getShoppingCartBean() {
+//		return shoppingCartBean;
+//	}
+//
+//	public void setShoppingCartBean(Set<ShoppingCartBean> shoppingCartBean) {
+//		this.shoppingCartBean = shoppingCartBean;
+//	}
 
 	public Set<OrderDetailsBean> getOrderDetailsBean() {
 		return orderDetailsBean;

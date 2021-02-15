@@ -43,7 +43,7 @@ public class MemberCreate {
 		ManageStatusBean manageStatus2 = new ManageStatusBean("locking");
 		
 		ProductBean product1=new ProductBean();
-		ProductBean product2 =new ProductBean(null, "籃球", 300.0, "111.111", null, null, null, null, null, null, null, null, null);
+		ProductBean product2 =new ProductBean(null, "籃球", 300.0, "111.111", null, null, null, null, null, null, null, null);
 		
 		
 		Set<ProductBean> products1 = new LinkedHashSet<>();
@@ -56,12 +56,12 @@ public class MemberCreate {
 		
 		ProductCategoryBean productCategory=new ProductCategoryBean(null, "用具", products1);
 		
-		ProductDetailBean basketball1=new ProductDetailBean(null, product2, "red", "6號球", 50, null, null, null);
-		ProductDetailBean basketball2=new ProductDetailBean(null, product2, "red", "5號球", 50, null, null, null);
+		ProductDetailBean basketball1=new ProductDetailBean(null, product2, "red", "6號球", 50, null, null);
+		ProductDetailBean basketball2=new ProductDetailBean(null, product2, "red", "5號球", 50, null, null);
 		
-		ProductPicBean proPic1=new ProductPicBean(null, basketball1, null, 0);
-		ProductPicBean proPic2=new ProductPicBean(null, basketball1, null, 1);
-		ProductPicBean proPic3=new ProductPicBean(null, basketball2, null, 0);
+		ProductPicBean proPic1=new ProductPicBean(null, null, 0);
+		ProductPicBean proPic2=new ProductPicBean(null, null, 1);
+		ProductPicBean proPic3=new ProductPicBean(null, null, 0);
 		
 		ProductCommentBean produccComment1=new ProductCommentBean(null, member, null, product2, 5, null, manageStatus1);
 		
@@ -77,7 +77,7 @@ public class MemberCreate {
 		
 		ShoppingCartBean cart1=new ShoppingCartBean(null, 2, member, basketball1);
 		
-		FavoriteListBean favoriteList1=new FavoriteListBean(null, member, product2);
+		FavoriteListBean favoriteList1=new FavoriteListBean(null, product2);
 		
 		SessionFactory factory = HibernateUtils.getSessionFactory();
 		Session session = factory.getCurrentSession();

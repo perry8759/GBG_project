@@ -25,10 +25,12 @@ public class FavoriteListBean implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer favorite_id;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="member_id")
-	private MemberBean memberBean;
+	//單向一對多，可以藉由會員找到收藏清單，無法由收藏清單找到會員
+//	@ManyToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name="member_id")
+//	private MemberBean memberBean;
 	
+	//單向多對一，可以藉由收藏清單找到商品
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="product_id")
 	private ProductBean productBean;
@@ -37,10 +39,10 @@ public class FavoriteListBean implements Serializable {
 	public FavoriteListBean() {
 	}
 
-	public FavoriteListBean(Integer favorite_id, MemberBean memberBean, ProductBean productBean) {
+	public FavoriteListBean(Integer favorite_id, ProductBean productBean) {
 		super();
 		this.favorite_id = favorite_id;
-		this.memberBean = memberBean;
+//		this.memberBean = memberBean;
 		this.productBean = productBean;
 	}
 
@@ -52,13 +54,13 @@ public class FavoriteListBean implements Serializable {
 		this.favorite_id = favorite_id;
 	}
 
-	public MemberBean getMemberBean() {
-		return memberBean;
-	}
-
-	public void setMemberBean(MemberBean memberBean) {
-		this.memberBean = memberBean;
-	}
+//	public MemberBean getMemberBean() {
+//		return memberBean;
+//	}
+//
+//	public void setMemberBean(MemberBean memberBean) {
+//		this.memberBean = memberBean;
+//	}
 
 	public ProductBean getProductBean() {
 		return productBean;

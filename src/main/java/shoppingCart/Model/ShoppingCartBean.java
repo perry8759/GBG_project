@@ -25,10 +25,12 @@ public class ShoppingCartBean implements Serializable{
 		@NotNull
 		private Integer product_amount;
 		
-		@ManyToOne(cascade = CascadeType.ALL)
-		@JoinColumn(name="member_id")
-		private MemberBean memberBean;
+		//單向一對多，可以藉由會員找到購物車，無法由購物車找到商品
+//		@ManyToOne(cascade = CascadeType.ALL)
+//		@JoinColumn(name="member_id")
+//		private MemberBean memberBean;
 		
+		//單向多對一，可以藉由購物車找到商品詳細資料
 		@ManyToOne(cascade = CascadeType.ALL)
 		@JoinColumn(name="product_detail_id")
 		private ProductDetailBean productDetailBean;
@@ -43,7 +45,7 @@ public class ShoppingCartBean implements Serializable{
 			super();
 			this.cart_id = cart_id;
 			this.product_amount = product_amount;
-			this.memberBean = memberBean;
+//			this.memberBean = memberBean;
 			this.productDetailBean = productDetailBean;
 		}
 
@@ -63,13 +65,13 @@ public class ShoppingCartBean implements Serializable{
 			this.product_amount = product_amount;
 		}
 
-		public MemberBean getMemberBean() {
-			return memberBean;
-		}
-
-		public void setMemberBean(MemberBean memberBean) {
-			this.memberBean = memberBean;
-		}
+//		public MemberBean getMemberBean() {
+//			return memberBean;
+//		}
+//
+//		public void setMemberBean(MemberBean memberBean) {
+//			this.memberBean = memberBean;
+//		}
 
 		public ProductDetailBean getProductDetailBean() {
 			return productDetailBean;

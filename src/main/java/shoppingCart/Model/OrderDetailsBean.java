@@ -28,11 +28,12 @@ public class OrderDetailsBean implements Serializable{
 	@NotNull
 	private Integer order_amount;
 	
+	//雙向一對多，可以藉由訂單細項找到訂單
 	@ManyToOne(cascade = CascadeType.ALL)
-//	@JoinColumn(name="order_id", referencedColumnName = "order_id")
 	@JoinColumn(name="order_id")
 	private OrdersBean ordersBean;
 	
+	//雙向一對多，可以藉由訂單細項找到商品詳細資料
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="product_detail_id")
 	private ProductDetailBean productDetailBean;

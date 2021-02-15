@@ -29,10 +29,12 @@ public class OrdersBean implements Serializable {
 	private Integer oseq_id;
 	private String order_id;
 	
+	//雙向多對一，可以藉由訂單找到會員
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="order_st_id")
 	private OrderSatusBean orderSatusBean;
 
+	//雙向多對一，可以藉由訂單找到會員
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="member_id")
 	private MemberBean memberBean;
@@ -48,15 +50,11 @@ public class OrdersBean implements Serializable {
 	@NotNull
 	private String shipping_style;
 
-//	================新增部分=================
-	
+	//雙向一對多，可以藉由訂單找到訂單細項
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "order_id")
 	private Set<OrderDetailsBean> orderDetailsBean = new LinkedHashSet<>();
 	
-//	================新增部分=================
-
-
 	// 要有預設建構子
 	public OrdersBean() {
 	}

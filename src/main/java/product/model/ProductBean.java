@@ -40,14 +40,17 @@ public class ProductBean implements Serializable {
 	private String productno;
 	private Clob product_textdetails;
 
+	//雙向一對多，可以藉由商品找到商品客群
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "customer_category_id")
 	private CustomerCategoryBean customerCategoryBean;
 
+	//雙向一對多，可以藉由商品找到商品分類
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "category_id")
 	private ProductCategoryBean productCategoryBean;
 
+	//雙向一對多，可以藉由商品找到商品狀態
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "product_st")
 	private ProductStausBean productStausBean;
@@ -57,25 +60,20 @@ public class ProductBean implements Serializable {
 	@NotNull
 	private Double average_score;
 
-//	================新增部分=================
-
+	//雙向一對多，可以藉由商品找到商品詳細資料
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "product_id")
-//	List<ProductDetailBean> productDetailBean = new ArrayList<>();
 	private Set<ProductDetailBean> productDetailBean = new LinkedHashSet<>();
 	
+	//單向多對一，可以藉由收藏清單找到商品，無法藉由商品找到收藏清單
+//	@OneToMany(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "product_id")
+//	private Set<FavoriteListBean> favoriteListBean = new LinkedHashSet<>();
+	
+	//雙向一對多，可以藉由商品找到商品評論
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "product_id")
-//	List<FavoriteListBean> favoriteListBean = new ArrayList<>();
-	private Set<FavoriteListBean> favoriteListBean = new LinkedHashSet<>();
-	
-	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "product_id")
-//	List<ProductCommentBean> productCommentBean = new ArrayList<>();
 	private Set<ProductCommentBean> productCommentBean = new LinkedHashSet<>();
-
-//	================新增部分=================
 
 	// 要有預設建構子
 	public ProductBean() {
@@ -84,7 +82,7 @@ public class ProductBean implements Serializable {
 	public ProductBean(Integer product_id, String product_title, Double product_price, String productno,
 			Clob product_textdetails, CustomerCategoryBean customerCategoryBean,
 			ProductCategoryBean productCategoryBean, ProductStausBean productStausBean, Integer product_purchases,
-			Double average_score, Set<ProductDetailBean> productDetailBean, Set<FavoriteListBean> favoriteListBean,
+			Double average_score, Set<ProductDetailBean> productDetailBean,
 			Set<ProductCommentBean> productCommentBean) {
 		super();
 		this.product_id = product_id;
@@ -98,7 +96,7 @@ public class ProductBean implements Serializable {
 		this.product_purchases = product_purchases;
 		this.average_score = average_score;
 		this.productDetailBean = productDetailBean;
-		this.favoriteListBean = favoriteListBean;
+//		this.favoriteListBean = favoriteListBean;
 		this.productCommentBean = productCommentBean;
 	}
 
@@ -190,13 +188,13 @@ public class ProductBean implements Serializable {
 		this.productDetailBean = productDetailBean;
 	}
 
-	public Set<FavoriteListBean> getFavoriteListBean() {
-		return favoriteListBean;
-	}
-
-	public void setFavoriteListBean(Set<FavoriteListBean> favoriteListBean) {
-		this.favoriteListBean = favoriteListBean;
-	}
+//	public Set<FavoriteListBean> getFavoriteListBean() {
+//		return favoriteListBean;
+//	}
+//
+//	public void setFavoriteListBean(Set<FavoriteListBean> favoriteListBean) {
+//		this.favoriteListBean = favoriteListBean;
+//	}
 
 	public Set<ProductCommentBean> getProductCommentBean() {
 		return productCommentBean;

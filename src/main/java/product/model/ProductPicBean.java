@@ -22,9 +22,10 @@ public class ProductPicBean implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer product_pic_id;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "product_detail_id")
-	private ProductDetailBean productDetailBean;
+	////單向一對多，可以藉由商品詳細資料找到商品照片，無法從照片找到商品
+//	@ManyToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "product_detail_id")
+//	private ProductDetailBean productDetailBean;
 
 	@NotNull
 	private Blob product_pic_img;
@@ -34,11 +35,11 @@ public class ProductPicBean implements Serializable {
 	public ProductPicBean() {
 	}
 
-	public ProductPicBean(Integer product_pic_id, ProductDetailBean productDetailBean, Blob product_pic_img,
+	public ProductPicBean(Integer product_pic_id, Blob product_pic_img,
 			Integer product_pic_seq) {
 		super();
 		this.product_pic_id = product_pic_id;
-		this.productDetailBean = productDetailBean;
+//		this.productDetailBean = productDetailBean;
 		this.product_pic_img = product_pic_img;
 		this.product_pic_seq = product_pic_seq;
 	}
@@ -51,13 +52,13 @@ public class ProductPicBean implements Serializable {
 		this.product_pic_id = product_pic_id;
 	}
 
-	public ProductDetailBean getProductDetailBean() {
-		return productDetailBean;
-	}
-
-	public void setProductDetailBean(ProductDetailBean productDetailBean) {
-		this.productDetailBean = productDetailBean;
-	}
+//	public ProductDetailBean getProductDetailBean() {
+//		return productDetailBean;
+//	}
+//
+//	public void setProductDetailBean(ProductDetailBean productDetailBean) {
+//		this.productDetailBean = productDetailBean;
+//	}
 
 	public Blob getProduct_pic_img() {
 		return product_pic_img;

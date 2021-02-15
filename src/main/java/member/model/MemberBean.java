@@ -62,19 +62,22 @@ public class MemberBean implements Serializable {
 	//雙向一對多，可以藉由會員找到商品評論
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "member_id")
-	Set<ProductCommentBean> ProductCommentBean = new LinkedHashSet<>();
+	private Set<ProductCommentBean> ProductCommentBean = new LinkedHashSet<>();
 
+	//單向一對多，可以藉由會員找到購物車
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "member_id")
-	Set<ShoppingCartBean> shoppingCartBean = new LinkedHashSet<>();
+	private Set<ShoppingCartBean> shoppingCartBean = new LinkedHashSet<>();
 
+	//單向一對多，可以藉由會員找到收藏清單
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "member_id")
-	Set<FavoriteListBean> favoriteListBean = new LinkedHashSet<>();
+	private Set<FavoriteListBean> favoriteListBean = new LinkedHashSet<>();
 
+	//雙向一對多，可以藉由會員找到訂單
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "member_id")
-	Set<OrdersBean> ordersBean = new LinkedHashSet<>();
+	private Set<OrdersBean> ordersBean = new LinkedHashSet<>();
 
 	
 	@ManyToMany(mappedBy = "members") // 雙向多對多 (此會員參與的多個隊伍)
@@ -109,35 +112,6 @@ public class MemberBean implements Serializable {
 		this.member_register_date = member_register_date;
 		this.member_perm_id = member_perm_id;
 	}
-
-//	public MemberBean(Integer member_id, String member_account, String member_pw, String member_real_name,
-//			String member_tax_id_number, String member_user_name, String member_cp_name, MemberSexBean member_sex_id,
-//			String member_email, String member_mobile_phone, String member_fixed_line_telephone, Date member_birthday,
-//			String member_address, Blob member_image, Timestamp member_register_date, MemberPermBean member_perm_id,
-//			Set<product.model.ProductCommentBean> productCommentBean, Set<ShoppingCartBean> shoppingCartBean,
-//			Set<FavoriteListBean> favoriteListBean, Set<OrdersBean> ordersBean) {
-//		super();
-//		this.member_id = member_id;
-//		this.member_account = member_account;
-//		this.member_pw = member_pw;
-//		this.member_real_name = member_real_name;
-//		this.member_tax_id_number = member_tax_id_number;
-//		this.member_user_name = member_user_name;
-//		this.member_cp_name = member_cp_name;
-//		this.member_sex_id = member_sex_id;
-//		this.member_email = member_email;
-//		this.member_mobile_phone = member_mobile_phone;
-//		this.member_fixed_line_telephone = member_fixed_line_telephone;
-//		this.member_birthday = member_birthday;
-//		this.member_address = member_address;
-//		this.member_image = member_image;
-//		this.member_register_date = member_register_date;
-//		this.member_perm_id = member_perm_id;
-//		ProductCommentBean = productCommentBean;
-//		this.shoppingCartBean = shoppingCartBean;
-//		this.favoriteListBean = favoriteListBean;
-//		this.ordersBean = ordersBean;
-//	}
 
 	public Integer getMember_id() {
 		return member_id;

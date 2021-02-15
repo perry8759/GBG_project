@@ -28,6 +28,7 @@ public class OrderSatusBean implements Serializable{
 	@NotNull
 	private String order_stname;
 	
+	//雙向一對多，可以藉由訂單狀態找到訂單
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="order_st_id")
 	private Set<OrdersBean> ordersBean = new LinkedHashSet<>();

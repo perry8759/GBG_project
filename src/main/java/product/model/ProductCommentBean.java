@@ -25,13 +25,15 @@ public class ProductCommentBean implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer comment_id;
 
+	//雙向多對一，可以藉由商品評論找到評論的會員
 	@ManyToOne
 	@JoinColumn(name = "member_id")
 	private MemberBean memberBean;
 
-//	@NotNull
+	@NotNull
 	private Date comment_date;
 
+	//雙向多對一，可以藉由商品評論找到商品
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "product_id")
 	private ProductBean productBean;
@@ -40,6 +42,7 @@ public class ProductCommentBean implements Serializable {
 	private Integer comment_value;
 	private Clob comment_comment;
 
+	//雙向多對一，可以藉由商品評論找到管理狀態
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "manage_status_id")
 	private ManageStatusBean manageStatusBean;

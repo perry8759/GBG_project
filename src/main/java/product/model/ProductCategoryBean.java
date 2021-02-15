@@ -29,9 +29,9 @@ public class ProductCategoryBean implements Serializable {
 	@NotNull
 	private String category_name;
 	
+	//雙向一對多，可以藉由商品分類找到商品
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "category_id")
-//	private List<ProductBean> productBean = new ArrayList<>();
 	private Set<ProductBean> productBean = new LinkedHashSet<>();
 	
 	// 要有預設建構子
