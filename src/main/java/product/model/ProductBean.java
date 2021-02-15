@@ -37,7 +37,7 @@ public class ProductBean implements Serializable {
 	private Double product_price;
 
 	@NotNull
-	private String productno;
+	private String productNo;
 	private Clob product_textdetails;
 
 	//雙向一對多，可以藉由商品找到商品客群
@@ -79,7 +79,7 @@ public class ProductBean implements Serializable {
 	public ProductBean() {
 	}
 
-	public ProductBean(Integer product_id, String product_title, Double product_price, String productno,
+	public ProductBean(Integer product_id, String product_title, Double product_price, String productNo,
 			Clob product_textdetails, CustomerCategoryBean customerCategoryBean,
 			ProductCategoryBean productCategoryBean, ProductStausBean productStausBean, Integer product_purchases,
 			Double average_score, Set<ProductDetailBean> productDetailBean,
@@ -88,7 +88,7 @@ public class ProductBean implements Serializable {
 		this.product_id = product_id;
 		this.product_title = product_title;
 		this.product_price = product_price;
-		this.productno = productno;
+		this.productNo = productNo;
 		this.product_textdetails = product_textdetails;
 		this.customerCategoryBean = customerCategoryBean;
 		this.productCategoryBean = productCategoryBean;
@@ -125,11 +125,11 @@ public class ProductBean implements Serializable {
 	}
 
 	public String getProductno() {
-		return productno;
+		return productNo;
 	}
 
 	public void setProductno(String productno) {
-		this.productno = productno;
+		this.productNo = productno;
 	}
 
 	public Clob getProduct_textdetails() {

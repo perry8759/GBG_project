@@ -36,7 +36,7 @@ public class ProductCommentBean implements Serializable {
 	//雙向多對一，可以藉由商品評論找到商品
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "product_id")
-	private ProductBean productBean;
+	private ProductBean product_id;
 
 	@NotNull
 	private Integer comment_value;
@@ -57,7 +57,7 @@ public class ProductCommentBean implements Serializable {
 		this.comment_id = comment_id;
 		this.memberBean = memberBean;
 		this.comment_date = comment_date;
-		this.productBean = productBean;
+		this.product_id = productBean;
 		this.comment_value = comment_value;
 		this.comment_comment = comment_comment;
 		this.manageStatusBean = manageStatusBean;
@@ -88,11 +88,11 @@ public class ProductCommentBean implements Serializable {
 	}
 
 	public ProductBean getProductBean() {
-		return productBean;
+		return product_id;
 	}
 
 	public void setProductBean(ProductBean productBean) {
-		this.productBean = productBean;
+		this.product_id = productBean;
 	}
 
 	public Integer getComment_value() {
