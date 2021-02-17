@@ -9,7 +9,7 @@
 
 </head>
 <body>
-<jsp:include page="/fragment/topMVC.jsp" />
+<jsp:include page="/fragment/topMVC2.jsp" /> 
        
          歡迎來到首頁!
          

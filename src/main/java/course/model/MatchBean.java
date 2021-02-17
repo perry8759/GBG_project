@@ -2,34 +2,21 @@
 package course.model;
 
 import java.io.Serializable;
-import java.sql.Clob;
 import java.sql.Timestamp;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import ACT.model.ActBean;
-import DOS.model.DOS;
-import DOS.model.DOS_PICTURE;
-import DOS.model.DOS_SPORT;
-import course.model.MatchBean;
-import course.model.MatchTeamBean;
-import member.model.MemberBean;
 
 @Entity
 @Table(name="match_main")

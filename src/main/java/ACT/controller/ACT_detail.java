@@ -1,0 +1,49 @@
+//controller 導向場地詳細資料
+package ACT.controller;
+
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import ACT.model.ActBean;
+import ACT.service.ActService;
+
+
+
+@WebServlet("/ACT/ACT_detail")
+public class ACT_detail extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		processRequest(request, response);
+	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		processRequest(request, response);
+	}
+	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		  try {
+			  ActService  as = new ActService();   
+	          request.setCharacterEncoding("UTF-8");			
+	          String ACTID = request.getParameter("ACTID"); 
+	          int vale=Integer.parseInt(ACTID.toString().trim()); 
+	          ActBean selectedBean=as.get(vale);
+
+	          request.setAttribute("ActBean", selectedBean);	//放入活動bean
+  
+	          RequestDispatcher rd =                       		
+	                 request.getRequestDispatcher("/ACT/ACT_Detail.jsp");
+	          rd.forward(request, response);               		
+	          return ;                                     		
+	       } catch(UnsupportedEncodingException e) {
+	          throw new ServletException(e); 
+	       }
+
+	}
+}

@@ -2,9 +2,6 @@
 package course.model;
 
 import java.io.Serializable;
-import java.sql.Clob;
-import java.sql.Timestamp;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,7 +9,6 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,11 +20,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import ACT.model.ActBean;
-import DOS.model.DOS;
-import DOS.model.DOS_PICTURE;
-import DOS.model.DOS_SPORT;
-import course.model.MatchTeamBean;
-import course.model.MatchTeamBean;
 import member.model.MemberBean;
 
 @Entity
@@ -49,7 +40,7 @@ public class MatchTeamBean implements Serializable{
 	//單向多對一，此報名隊伍為何種報名狀態
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "reg_status_id")
-	private RegStatusBean regs_status_id;
+	private RegStatusBean reg_status_id;
 	
 	//雙向一對多 (此報名隊伍在各單局之分數)
 	@OneToMany(cascade = CascadeType.ALL,mappedBy = "match_team_id")
@@ -70,7 +61,7 @@ public class MatchTeamBean implements Serializable{
 		this.team_name = team_name;
 		this.team_unit = team_unit;
 		this.act_id = act_id;
-		this.regs_status_id = regs_status_id;
+		this.reg_status_id = regs_status_id;
 	}
 
 	public Integer getMatch_team_id() {
@@ -105,12 +96,12 @@ public class MatchTeamBean implements Serializable{
 		this.act_id = act_id;
 	}
 
-	public RegStatusBean getRegs_status_id() {
-		return regs_status_id;
+	public RegStatusBean getReg_status_id() {
+		return reg_status_id;
 	}
 
-	public void setRegs_status_id(RegStatusBean regs_status_id) {
-		this.regs_status_id = regs_status_id;
+	public void setReg_status_id(RegStatusBean reg_status_id) {
+		this.reg_status_id = reg_status_id;
 	}
 
 	public Set<MemberBean> getMembers() {
