@@ -118,15 +118,15 @@ a.booking{
               <div class="Td">
                         <div class="Content">
                             <div class="CTitle">場地管理人</div>
-                            <div class="CContent">XXX</div>
+                            <div class="CContent">${DOSID.DOS_AD}</div>
                         </div>
                         <div class="Content">
                             <div class="CTitle">租借聯絡人</div>
-                            <div class="CContent">XXX</div>
+                            <div class="CContent">${DOSID.DOS_OFFICER}</div>
                         </div>
                         <div class="Content">
                             <div class="CTitle">租借連絡電話</div>
-                            <div class="CContent">XXX</div>
+                            <div class="CContent">${DOSID.DOS_PHONE}</div>
                         </div>
               </div>
            </div>
@@ -136,10 +136,8 @@ a.booking{
               <h2 class="Td Title">交通方式</h2>
                    <div class="Td">
                        <div class="Content">
-                                                                    公車： 聯營5、227、238、239、249、262下車後沿永和路往中正橋方向，從中正橋右側巷道進入，步行約5～10分鐘。
-                           </br>捷運： 請搭捷運板南線，在古亭站下車，步行約15-20分鐘
-                           </br>捷運： 請搭捷運板南線，在古亭站下車，步行約15-20分鐘
-                           </br>捷運： 請搭捷運板南線，在古亭站下車，步行約15-20分鐘
+                               ${DOSID.clobString_DOSTRANS}
+                           
                        </div>
                    </div>
               </div>
@@ -148,11 +146,7 @@ a.booking{
              <div class="Tr">
               <h2 class="Td Title">備註</h2>
                   <div class="Content">
-                                                          申請使用本局所轄各開放式場地以集會、演說、展覽
-                                                         、表演或為其他特殊使用者，應向管理機關申請核准使用
-                                                         ，並不得有營利行為。但舉辦有關推廣政令、公益、社教
-                                                         、休閒體育、民俗節慶、農特產品、藝文展演、
-                                                         文化創意產業或本府各機關因推動市政等目的所舉辦之活動，經管理機關核准者，不在此限。                              
+                                 ${DOSID.clobString_DOSPS}                             
               </div>
               </div>
        </div>

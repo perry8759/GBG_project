@@ -10,11 +10,21 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import DOS.model.DOS;
 import DOS.model.DOS_PICTURE;
+import DOS.model.DOS_SPORT;
 import util.HibernateUtils;
 
-
+//請查看DOSService說明
 public interface DOSDao {
-	List<DOS> select();//取得所有場地
-	DOS selectid(int  dOSID);//取得編號場地
-	List<DOS_PICTURE> selecallpic(int  dOSID);//取得該場地之所有圖片
+	List<DOS> select();
+	List<DOS_SPORT> select_sport();
+	DOS selectid(int  dOSID);
+	List<DOS_PICTURE> selecallpic(int  dOSID);
+	int updateid(DOS dos);
+	void insertid(DOS dos);
+	void deleteid(Integer id);
+	
+	DOS_SPORT select_sportid(int  dOS_sport_id);
+	int updateSportId(DOS_SPORT dos_sport);
+	void insertSportId(DOS_SPORT dos_sport);
+	void deleteSportId(Integer id);
 }

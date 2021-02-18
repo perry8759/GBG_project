@@ -1,4 +1,4 @@
-//controller 導向場地詳細資料
+//導向場地詳細資料(使用者畫面)
 package DOS.controller;
 
 import java.io.IOException;

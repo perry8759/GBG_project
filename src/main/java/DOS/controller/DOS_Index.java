@@ -1,4 +1,4 @@
-//controller導向場地主頁
+//導向場地主頁(使用者畫面)
 package DOS.controller;
 
 import java.io.IOException;

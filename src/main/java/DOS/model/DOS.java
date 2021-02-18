@@ -2,8 +2,12 @@
 package DOS.model;
 
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.Reader;
 import java.io.Serializable;
 import java.sql.Clob;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -20,10 +24,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import ACT.model.ActBean;
+import javax.sql.rowset.serial.SerialException;
+
+import ACT.model.ACT;
 
 @Entity
 @Table(name="DOS")
@@ -43,13 +50,15 @@ public class DOS implements Serializable{
 	private String DOS_AD;
 	private String DOS_OFFICER;
 	private String DOS_PHONE;
+	@Lob
 	private Clob DOS_TRANS;
+	@Lob
 	private Clob DOS_PS;
 	
 
 	
 	//單向一對多，可從場地找到多張照片
-	@OneToMany(cascade = CascadeType.PERSIST, orphanRemoval = true,fetch=FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true,fetch=FetchType.EAGER)
 	@JoinColumn(name = "DOS_ID", referencedColumnName = "DOS_ID")
 	//對DOS_PICTURE新增欄位外鍵，當場地刪除時需先將所有場地圖片刪除
 	private Set<DOS_PICTURE> dos_picture = new HashSet<>();
@@ -57,10 +66,10 @@ public class DOS implements Serializable{
 	//雙向一對多，可從場地找到目前正在進行的活動(改雙向map)
 	@OneToMany(mappedBy = "dos_id", cascade = CascadeType.ALL,fetch=FetchType.EAGER)
 	//對ACT新增欄位外鍵
-	private Set<ActBean> act = new HashSet<>();
+	private Set<ACT> act = new HashSet<>();
 	//雙向一對多，可從場地找到運動種類
-	@ManyToOne(cascade = CascadeType.ALL) 
-	@JoinColumn(name="dos_sport_id", nullable=false)
+	@ManyToOne(cascade=CascadeType.ALL) 
+	@JoinColumn(name="dos_sport_id")
 	//自身加入欄位
 	private DOS_SPORT dos_sport_id = new DOS_SPORT();
 	
@@ -193,11 +202,11 @@ public class DOS implements Serializable{
 		this.dos_picture = dos_picture;
 	}
 
-	public Set<ActBean> getAct() {
+	public Set<ACT> getAct() {
 		return act;
 	}
 
-	public void setAct(Set<ActBean> act) {
+	public void setAct(Set<ACT> act) {
 		this.act = act;
 	}
 
@@ -224,9 +233,44 @@ public class DOS implements Serializable{
 		doss.add(ddd);
 		return doss;
 	}
-	
-	
-	
-	
-	
+	//將clob轉成字串
+	public String getclobString_DOSPS() throws SQLException, IOException {
+		Clob DOSPS=getDOS_PS();
+		String content = "";  
+        try {  
+            Reader is = DOSPS.getCharacterStream();  
+            BufferedReader buff = new BufferedReader(is);// 得到流  
+            String line = buff.readLine();  
+            StringBuffer sb = new StringBuffer();  
+            while (line != null) {
+                sb.append(line);  
+                sb.append("\r\n");  
+                line = buff.readLine();  
+            }  
+            content = sb.toString();  
+        } catch (Exception e) {  
+            
+        }  
+        return content;   
+	}
+	//將clob轉成字串
+		public String getclobString_DOSTRANS() throws SQLException, IOException {
+			Clob DOSPS=getDOS_TRANS();
+			String content = "";  
+	        try {  
+	            Reader is = DOSPS.getCharacterStream();  
+	            BufferedReader buff = new BufferedReader(is);// 得到流  
+	            String line = buff.readLine();  
+	            StringBuffer sb = new StringBuffer();  
+	            while (line != null) {
+	                sb.append(line);  
+	                sb.append("\r\n");  
+	                line = buff.readLine();  
+	            }  
+	            content = sb.toString();  
+	        } catch (Exception e) {  
+	            
+	        }  
+	        return content;   
+		}
 }
