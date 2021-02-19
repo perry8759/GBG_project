@@ -8,8 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-     <c:set var="funcName" value="REG" scope="session"/>
      <jsp:include page="/fragment/topMVC.jsp" />
-     發表成功
+     成功
 </body>
 </html>

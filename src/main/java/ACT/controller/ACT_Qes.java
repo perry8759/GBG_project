@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ACT.model.ActBean;
+import ACT.model.ACT;
 import ACT.service.ActService;
 
 
@@ -32,7 +32,7 @@ public class ACT_Qes extends HttpServlet {
 	          request.setCharacterEncoding("UTF-8");			
 	          String ACTID = request.getParameter("ACTID"); 
 	          int vale=Integer.parseInt(ACTID.toString().trim()); 
-	          ActBean selectedBean=as.get(vale);
+	          ACT selectedBean=as.get(vale);
 
 	          request.setAttribute("ActBean", selectedBean);	//放入活動bean
   

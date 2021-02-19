@@ -80,7 +80,7 @@ public class ACT_reg extends HttpServlet {
 			Object n = service.save(team);
 			if (n != null) {
 				msgOK.put("InsertOK", "<Font color='red'>報名成功</Font>");
-				response.sendRedirect("ACTRegSuccess.jsp");
+				response.sendRedirect("Success.jsp");
 				return;
 			}
 		} catch (Exception e) {

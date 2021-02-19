@@ -6,7 +6,7 @@ import java.util.Set;
 
 import ACT.model.ACT_QES;
 import ACT.model.ACT_RFORM;
-import ACT.model.ActBean;
+import ACT.model.ACT;
 import ACT.service.ActQesService;
 import ACT.service.ActRformService;
 import ACT.service.ActRuleService;
@@ -18,7 +18,7 @@ import _00_init.dos.service.DosSportService;
 
 public class ActFakeDataCreate {
 	public static void initVal() {
-		ActBean act1=new ActBean();
+		ACT act1=new ACT();
 		act1.setMEMBER_ID(1);  //(主辦者)沒有設外鍵，因此這樣給會員id就好
 		act1.setDos_id(new DosService().get(1));
 		act1.setACT_TITLE("比賽一");
@@ -26,7 +26,7 @@ public class ActFakeDataCreate {
 		act1.setAct_status(new ActStatusService().get(1));
 		act1.setAct_rule(new ActRuleService().get(1));
 		
-		ActBean act2=new ActBean();
+		ACT act2=new ACT();
 		act2.setMEMBER_ID(2);
 		act2.setDos_id(new DosService().get(2));
 		act2.setACT_TITLE("比賽二");

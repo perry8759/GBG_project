@@ -14,6 +14,8 @@ import javax.persistence.Table;
 
 import ACT.model.ACT;
 
+
+
 //單向一對多 可以從運動種類找到場地
 @Entity
 @Table(name="DOS_SPORT")

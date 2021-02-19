@@ -3,7 +3,7 @@ package ACT.service;
 import java.util.List;
 
 import ACT.dao.ActDao;
-import ACT.model.ActBean;
+import ACT.model.ACT;
 
 
 
@@ -14,11 +14,11 @@ public class ActService {
 		dao = new ActDao();
 	}
 
-	public void persist(ActBean act) {
+	public void persist(ACT act) {
 		dao.persist(act);
 	}
 	
-	public Object save(ActBean act) {
+	public Object save(ACT act) {
 		return dao.save(act);
 	}
 
@@ -26,11 +26,11 @@ public class ActService {
 //		return dao.load(pk);
 //	}
 
-	public ActBean get(int pk) {
+	public ACT get(int pk) {
 		return dao.get(pk);
 	}
 
-	public void updateAct(ActBean e) {
+	public void updateAct(ACT e) {
 		dao.updateAct(e);
 	}
 
@@ -38,7 +38,7 @@ public class ActService {
 		dao.delete(pk);
 	}
 
-	public List<ActBean> getAllAct() {
+	public List<ACT> getAllAct() {
 		return dao.getAllAct();
 	}
 

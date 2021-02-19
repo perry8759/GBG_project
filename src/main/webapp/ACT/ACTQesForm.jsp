@@ -20,8 +20,10 @@
 					</caption>
 
 					<fieldset class="form-group">
-						<label>輸入內文</label> <input type="text" class="form-control"
-							name="comment" required="required">
+						<label>輸入內文</label> 
+<!-- 						<input type="text" class="form-control" -->
+<!-- 							name="comment" required="required"> -->
+						<textarea class="form-control" cols="80" rows="14" name="comment" required="required"></textarea>
 					</fieldset>
 
 					<input type="hidden" value="${param.ACTID}" name="actid">

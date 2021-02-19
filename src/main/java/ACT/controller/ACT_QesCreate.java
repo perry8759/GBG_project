@@ -1,6 +1,7 @@
 package ACT.controller;
 
 import java.io.IOException;
+import java.sql.Clob;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -13,8 +14,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.sql.rowset.serial.SerialClob;
 
-import ACT.model.ActBean;
+import ACT.model.ACT_QES;
+import ACT.model.ACT;
+import ACT.service.ActQesService;
 import ACT.service.ActService;
 import course.model.MatchTeamBean;
 import course.service.impl.MatchTeamService;
@@ -52,31 +56,35 @@ public class ACT_QesCreate extends HttpServlet {
 			return;
 		}
 		try {
-			// 4. 對act/act_qes做更新
-			ACT_Qes qes=new ACT_Qes();
+			// 4. 對act/act_qes做更新	
+			// 將所有資料封裝到Bean(類別的)物件		
+			ACT_QES qes=new ACT_QES();
+			Clob clob=new SerialClob(comment.toCharArray());
+			qes.setACT_QES_COM(clob);
+			
+			MemberBean member = (MemberBean) session.getAttribute("LoginOK");
+			qes.setMEMBER_ID(member.getMember_id());
 			
 			ActService service1 = new ActService();
-			ActBean act=service1.get(Integer.valueOf(request.getParameter("actid")));
-//			act.getAct_qes().add();
+			ActQesService service2=new ActQesService();
 			
-			// 將所有資料封裝到Bean(類別的)物件
-
+			ACT act=service1.get(Integer.valueOf(request.getParameter("actid")));
+			Set<ACT_QES> set=act.getAct_qes();
+			set.add(qes);
+			act.setAct_qes(set);
 			
-			ActService service3=new ActService();
-			
-			
-			System.out.println(request.getParameter("actid"));
-			// 呼叫MatchTeamDao的save方法
-//			Object n = service.save(team);
-//			if (n != null) {
-//				msgOK.put("InsertOK", "<Font color='red'>發表成功</Font>");
-//				response.sendRedirect("ACTQesSuccess.jsp");
-//				return;
-//			}
+			// 呼叫Act的update方法/act_qes Dao的save方法
+			Object n = service2.save(qes);
+			service1.updateAct(act);
+			if (n != null) {
+				msgOK.put("InsertOK", "<Font color='red'>發表成功</Font>");
+				response.sendRedirect("Success.jsp");
+				return;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			errorMsg.put("errorIdDup", e.getMessage());
-			RequestDispatcher rd = request.getRequestDispatcher("ACTRegForm.jsp");
+			errorMsg.put("error", e.getMessage());
+			RequestDispatcher rd = request.getRequestDispatcher("ACTQesForm.jsp");
 			rd.forward(request, response);
 		}
 

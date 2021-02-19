@@ -34,7 +34,7 @@ import member.model.MemberBean;
 
 @Entity
 @Table(name="ACT")
-public class ActBean implements Serializable{
+public class ACT implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -95,10 +95,10 @@ public class ActBean implements Serializable{
 	private Set<MemberBean> followers=new LinkedHashSet<>();
 	
 
-	public ActBean() {
+	public ACT() {
 		
 	}
-	public ActBean(Integer aCT_ID, Integer mEMBER_ID, DOS dos_id, String aCT_TITLE, String aCT_DESC, Integer aCT_MAX_TEAM,
+	public ACT(Integer aCT_ID, Integer mEMBER_ID, DOS dos_id, String aCT_TITLE, String aCT_DESC, Integer aCT_MAX_TEAM,
 			Integer aCT_MAX_PNUM, Timestamp aCT_SIGN_O, Timestamp aCT_SIGN_C, Timestamp aCT_RUN_O, Timestamp aCT_RUN_C,
 			Integer aCT_PAY, DOS_SPORT dos_sport, ACT_STATUS act_status, byte[] aCT_LOGO, Integer aCT_PNUM,
 			ACT_RULE act_rule, Clob aCT_NEWS,Set<ACT_RFORM> act_rform,Set<ACT_QES> act_qes) {

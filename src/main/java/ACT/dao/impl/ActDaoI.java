@@ -2,25 +2,25 @@ package ACT.dao.impl;
 
 import java.util.List;
 
-import ACT.model.ActBean;
+import ACT.model.ACT;
 
 public interface ActDaoI {
 
-	void persist(ActBean act);
+	void persist(ACT act);
 
-	Object save(ActBean act);
+	Object save(ACT act);
 
 	// 經由Session介面的get()查詢資料庫內的紀錄
-	ActBean get(int pk);
+	ACT get(int pk);
 
 	//	// 更新紀錄
-	void updateAct(ActBean act);
+	void updateAct(ACT act);
 
 	// 刪除紀錄
 	void delete(int pk);
 
 	//	// 查詢所有紀錄
-	List<ActBean> getAllAct();
+	List<ACT> getAllAct();
 
 	void close();
 

@@ -44,7 +44,7 @@
                 <a class="nav-link" href="<c:url value='/ACT/ACT_Index' />">賽事專區</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">舉辦活動</a>
+                <a class="nav-link" href="<c:url value='/DOS/DOS_Index' />">舉辦活動</a>
               </li>
   			  <li class="nav-item">
                 <a class="nav-link" href="<c:url value='/DOS/DOS_Index' />">場地查詢</a>
@@ -52,15 +52,15 @@
               <c:choose>
 		          <c:when test="${LoginOK.member_perm_id.member_perm_id==2 }">
 		             <li class="nav-item">
-		             <a href="#">管理活動</a>
+		             	<a class="nav-link" a href="#">管理活動</a>
 		             </li>
 		          </c:when>
 		          <c:when test="${LoginOK.member_perm_id.member_perm_id==3 }">
-		             <li class="nav-item">
-		             	<a class="nav-link" href="#">管理活動</a>
+		          	<li class="nav-item">
+		             	<a class="nav-link" a href="#">管理活動</a>
 		             </li>
 		             <li class="nav-item">
-		             	<a class="nav-link" href="<c:url value='/DOS/DOS_management/list' />">管理場地</a>
+		             	<a class="nav-link" href="<c:url value='/DOS/DOS_list' />">管理場地</a>
 		             </li>
 		             <li class="nav-item">
 		             	<a class="nav-link" href="#">管理商品</a>
@@ -71,20 +71,20 @@
 
             <!--視需求新增欄位 li -->
             <ul class="navbar-nav ml-auto">
-            <c:if test="${empty LoginOK}">
+            <c:if test="${empty  LoginOK}">
               <li class="nav-item">
                 <a class="nav-link" href="<c:url value='/register/register.jsp' />">註冊</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="<c:url value='/login/login.jsp' />">登入</a>
+                <a class="nav-link" href="<c:url value='/login/login2.jsp' />">登入</a>
               </li>
              </c:if>
              <c:if test="${! empty LoginOK}">  
              	<c:choose>
-		          <c:when test="${LoginOK.member_perm_id.member_perm_id==2 }">
+		          <c:when test="${LoginOK.member_perm_id.member_perm_id==1 }">
 		          <li class="nav-item nav-link">一般會員主辦方${LoginOK.member_account }</li>
 		           </c:when>
-		           <c:when test="${LoginOK.member_perm_id.member_perm_id==1 }">
+		           <c:when test="${LoginOK.member_perm_id.member_perm_id==2 }">
 		          <li class="nav-item nav-link">主辦方${LoginOK.member_account }</li>
 		           </c:when>
 		           <c:when test="${LoginOK.member_perm_id.member_perm_id==3 }">

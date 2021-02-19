@@ -7,7 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import ACT.model.ActBean;
+import ACT.model.ACT;
 import util.HibernateUtils;
 
 public class ActDao {
@@ -18,7 +18,7 @@ public class ActDao {
 		factory = HibernateUtils.getSessionFactory();
 	}
 
-	public void persist(ActBean act) {
+	public void persist(ACT act) {
 		Session session = factory.getCurrentSession();
 		Transaction tx = null;
 		try {
@@ -33,7 +33,7 @@ public class ActDao {
 		}
 	}
 	
-	public Object save(ActBean act) {
+	public Object save(ACT act) {
 		Session session = factory.getCurrentSession();
 		Transaction tx = null;
 		Object key = null;
@@ -57,13 +57,13 @@ public class ActDao {
 //	}
 	
 	// 經由Session介面的get()查詢資料庫內的紀錄
-	public ActBean get(int pk) {
-		ActBean dos = null;
+	public ACT get(int pk) {
+		ACT dos = null;
 		Session session = factory.getCurrentSession();
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
-			dos = (ActBean) session.get(ActBean.class, pk);
+			dos = (ACT) session.get(ACT.class, pk);
 			tx.commit();
 		} catch (Exception e) {
 			if (tx != null)
@@ -74,13 +74,13 @@ public class ActDao {
 	}
 
 //	// 更新紀錄
-	public void updateAct(ActBean act) {
-		ActBean old_act = null;
+	public void updateAct(ACT act) {
+		ACT old_act = null;
 		Session session = factory.getCurrentSession();
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction(); 
-			old_act = (ActBean) session.get(ActBean.class, act.getACT_ID()); // Employee: Persistent
+			old_act = (ACT) session.get(ACT.class, act.getACT_ID()); // Employee: Persistent
 			if (old_act != null) {
 				old_act.setACT_TITLE(act.getACT_TITLE());
 				//...沒寫完 (改spring就不用用ㄌ)
@@ -101,7 +101,7 @@ public class ActDao {
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
-			ActBean dos = new ActBean();
+			ACT dos = new ACT();
 			dos.setACT_ID(pk);
 			session.delete(dos);
 			tx.commit();
@@ -116,9 +116,9 @@ public class ActDao {
 	
 //	// 查詢所有紀錄
 	@SuppressWarnings("unchecked")
-	public List<ActBean> getAllAct() {
+	public List<ACT> getAllAct() {
 		System.out.println("ActDAO: getAllAct");
-		List<ActBean> allAct = new ArrayList<>();
+		List<ACT> allAct = new ArrayList<>();
 		Session session = factory.getCurrentSession();
 		Transaction tx = null;
 		try {

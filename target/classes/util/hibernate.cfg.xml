@@ -41,7 +41,7 @@
 		<mapping class="DOS.model.DOS"></mapping>
 		<mapping class="DOS.model.DOS_PICTURE"></mapping>
 		<mapping class="ACT.model.ACT_STATUS"></mapping>
-		<mapping class="ACT.model.ActBean"></mapping>
+		<mapping class="ACT.model.ACT"></mapping>
 		<mapping class="ACT.model.ACT_RULE"></mapping>
 		<mapping class="ACT.model.ACT_RFORM"></mapping>
 		<mapping class="ACT.model.ACT_QES"></mapping>

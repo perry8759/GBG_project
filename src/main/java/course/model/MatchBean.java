@@ -16,7 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import ACT.model.ActBean;
+import ACT.model.ACT;
 
 @Entity
 @Table(name="match_main")
@@ -29,7 +29,7 @@ public class MatchBean implements Serializable{
 	//雙向多對一，多個賽局會屬於同一個活動
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "ACT_ID")
-	private ActBean act_id;
+	private ACT act_id;
 	
 	//單向多對一，此賽局為何種賽局狀態
 	@ManyToOne(cascade = CascadeType.ALL)
@@ -55,11 +55,11 @@ public class MatchBean implements Serializable{
 		this.match_id = match_id;
 	}
 
-	public ActBean getAct_id() {
+	public ACT getAct_id() {
 		return act_id;
 	}
 
-	public void setAct_id(ActBean act_id) {
+	public void setAct_id(ACT act_id) {
 		this.act_id = act_id;
 	}
 

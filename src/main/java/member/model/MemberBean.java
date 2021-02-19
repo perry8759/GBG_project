@@ -21,7 +21,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import ACT.model.ActBean;
+import ACT.model.ACT;
 import course.model.MatchTeamBean;
 import product.model.ProductBean;
 import product.model.ProductCommentBean;
@@ -84,7 +84,7 @@ public class MemberBean implements Serializable {
 	private Set<MatchTeamBean> teams=new LinkedHashSet<>();
 	
 	@ManyToMany(mappedBy = "followers") // 雙向多對多 (此會員關注的多個活動)
-	private Set<ActBean> followActs=new LinkedHashSet<>();
+	private Set<ACT> followActs=new LinkedHashSet<>();
 	
 	public MemberBean() {
 
@@ -281,11 +281,11 @@ public class MemberBean implements Serializable {
 		this.teams = teams;
 	}
 
-	public Set<ActBean> getFollowActs() {
+	public Set<ACT> getFollowActs() {
 		return followActs;
 	}
 
-	public void setFollowActs(Set<ActBean> followActs) {
+	public void setFollowActs(Set<ACT> followActs) {
 		this.followActs = followActs;
 	}
 	
