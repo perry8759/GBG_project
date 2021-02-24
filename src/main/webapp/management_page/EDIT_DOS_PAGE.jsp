@@ -68,7 +68,7 @@
                         </c:forEach>
                         </c:if>
                         
-                        <!--  <label>場地照片</label>                     
+                     	<!--<label>場地照片</label> 
                         <c:forEach var="dospic"  varStatus="statusX" items="${dos_picture}">
                        <input type="file" id="progressbarTWInput" accept="image/gif, image/jpeg, image/png"/>
                         <img src="data:image/jpg;base64,${dospic}" class="img-fluid" id="preview_progressbarTW_img"/>

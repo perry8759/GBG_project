@@ -9,7 +9,7 @@
 <title>報名活動表單</title>
 </head>
 <body>
-	<jsp:include page="/fragment/topMVC.jsp" />
+	<jsp:include page="/fragment/topMVC2.jsp" />
 	<div class="container col-md-5">
 		<div class="card">
 			<div class="card-body">
@@ -30,7 +30,7 @@
 					</fieldset>
 
 					<fieldset class="form-group">
-						<label>聯絡人 ${sessionScope.LoginOK.member_real_name}</label>
+						<label>聯絡人 ${sessionScope.LoginOK.member_cp_name}</label>
 					</fieldset>
 
 					<fieldset class="form-group">

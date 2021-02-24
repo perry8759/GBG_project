@@ -72,7 +72,7 @@ public class ACT_Main_Insert extends HttpServlet {
 	    ACT act_bean=new ACT(null,mb.getMember_id(),null, ACT_MAIN_TITLE, ACT_MAIN_DESC, Integer.parseInt(ACT_MAIN_PERSON),
 	    		1,amo, amc, amt,amt, Integer.parseInt(ACT_MAIN_PAY),null,null,null,
 	    		Integer.parseInt(ACT_MAIN_PERSON),null,null,null,null);
-	    rs.insertACT(act_bean, 1, 1,s,1);
+	    rs.insertACT(act_bean, Integer.parseInt(DOS_ID), 1,s,1);
 	    	 //rs.selectid(act_bean);
 //	    	 rs.selectid1(ACT_MAIN_OPENING, ACT_MAIN_CLOSING);
 //	    	 System.out.print(date);

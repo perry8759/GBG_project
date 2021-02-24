@@ -25,9 +25,8 @@ public class ACT_RFORM implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public ACT_RFORM(Integer aCT_RFORM_id, byte[] aCT_RFORM_doc) {
+	public ACT_RFORM(byte[] aCT_RFORM_doc) {
 		super();
-		ACT_RFORM_id = aCT_RFORM_id;
 		ACT_RFORM_doc = aCT_RFORM_doc;
 	}
 

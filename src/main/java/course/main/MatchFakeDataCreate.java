@@ -1,6 +1,7 @@
 package course.main;
 
-import ACT.service.ActService;
+import ACT.service.ACTService;
+import ACT.service.impl.ACTServiceImpl;
 import course.model.MatchBean;
 import course.service.MatchServiceI;
 import course.service.MatchStatusServiceI;
@@ -10,7 +11,7 @@ import course.service.impl.MatchStatusService;
 
 public class MatchFakeDataCreate {
 	public static void main(String args[]) {
-		ActService as=new ActService();
+		ACTService as=new ACTServiceImpl();
 		MatchStatusServiceI mss=new MatchStatusService();
 		
 		MatchBean match1=new MatchBean();

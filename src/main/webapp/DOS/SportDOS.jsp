@@ -172,7 +172,7 @@
                   <img src="data:image/jpg;base64,${dosp.DOS_PICTURE_PIC_ONE}"/>
                   </c:forEach>
                   <div class="caption">
-                       <h3> ${mem.DOS_NAME}</h3>
+                       <h3>${mem.DOS_NAME}</h3>
                        <p>${mem.DOS_ADDR}</p>
                        
                        <p>${mem.DOS_PAY}</p>

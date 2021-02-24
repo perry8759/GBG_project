@@ -47,7 +47,9 @@
                                         <c:out value="${dos.DOS_SPORT_NAME}" />
                                     </td>
                                     
-                                    <td><a href="DOS_sport_edit?dos_sport_id=${dos.DOS_SPORT_ID}">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="DOS_sport_delete?dos_sport_id=<c:out value='${dos.DOS_SPORT_ID}' />">Delete</a></td>
+                                    <td><a href="DOS_sport_edit?dos_sport_id=${dos.DOS_SPORT_ID}">Edit</a> 
+                                    &nbsp;&nbsp;&nbsp;&nbsp; 
+                                    <a href="DOS_sport_delete?dos_sport_id=<c:out value='${dos.DOS_SPORT_ID}' />">Delete</a></td>
                                 </tr>
                             </c:forEach>
                             <!-- } -->

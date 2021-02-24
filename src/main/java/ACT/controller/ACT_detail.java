@@ -12,7 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ACT.model.ACT;
-import ACT.service.ActService;
+import ACT.service.ACTService;
+import ACT.service.impl.ACTServiceImpl;
 
 
 
@@ -29,7 +30,7 @@ public class ACT_detail extends HttpServlet {
 	}
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		  try {
-			  ActService  as = new ActService();   
+			  ACTService  as = new ACTServiceImpl();   
 	          request.setCharacterEncoding("UTF-8");			
 	          String ACTID = request.getParameter("ACTID"); 
 	          int vale=Integer.parseInt(ACTID.toString().trim()); 

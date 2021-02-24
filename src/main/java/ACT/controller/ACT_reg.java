@@ -14,7 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import ACT.service.ActService;
+import ACT.service.ACTService;
+import ACT.service.impl.ACTServiceImpl;
 import course.model.MatchTeamBean;
 import course.service.impl.MatchTeamService;
 import course.service.impl.RegStatusService;
@@ -72,7 +73,7 @@ public class ACT_reg extends HttpServlet {
 			RegStatusService service2 = new RegStatusService();
 			team.setReg_status_id(service2.get(1)); //一開始都是未審核
 			
-			ActService service3=new ActService();
+			ACTService service3=new ACTServiceImpl();
 			team.setAct_id(service3.get(Integer.valueOf(request.getParameter("actid"))));
 			
 			System.out.println(request.getParameter("actid"));
@@ -80,7 +81,7 @@ public class ACT_reg extends HttpServlet {
 			Object n = service.save(team);
 			if (n != null) {
 				msgOK.put("InsertOK", "<Font color='red'>報名成功</Font>");
-				response.sendRedirect("Success.jsp");
+				response.sendRedirect("ACT_Main");
 				return;
 			}
 		} catch (Exception e) {

@@ -2,8 +2,6 @@
 package ACT.controller;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -12,9 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import ACT.dao.impl.ACTDaoImpl;
 import ACT.model.ACT;
 import ACT.service.ACTService;
 import ACT.service.impl.ACTServiceImpl;

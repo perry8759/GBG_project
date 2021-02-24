@@ -27,4 +27,7 @@ public interface DOSDao {
 	int updateSportId(DOS_SPORT dos_sport);
 	void insertSportId(DOS_SPORT dos_sport);
 	void deleteSportId(Integer id);
+	
+	DOS get(Integer dos_id);
+	DOS_SPORT getSportById(Integer dos_sport_id);
 }

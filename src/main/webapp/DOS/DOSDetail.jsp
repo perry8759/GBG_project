@@ -103,8 +103,7 @@ a.booking{
 <jsp:include page="/fragment/topMVC.jsp" />    
 <div  id="MainMenu">
 
-      <!-- <div id="fun"><a href="../ACT/ACT_Index?DOSID=<c:out value="${DOSID.DOS_ID}"/>" class="booking" >租用場地</a></div>-->
-<div id="fun"><a href="../ACT/ACTOrgForm.jsp?DOSID=<c:out value="${DOSID.DOS_ID}"/>" class="booking" >租用場地</a></div>
+      <div id="fun"><a href="../ACT/ACT_Index?DOSID=<c:out value="${DOSID.DOS_ID}"/>" class="booking" >租用場地</a></div>
 
 
 <h1 id="MainTitle" style="margin-top:0px">

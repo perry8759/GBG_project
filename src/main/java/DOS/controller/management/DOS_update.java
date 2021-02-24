@@ -50,7 +50,7 @@ public class DOS_update extends HttpServlet {
 		        DOSService  rs = new DOSServiceImpl();
 		        response.setContentType("text/html");
 		        request.setCharacterEncoding("UTF-8");
-		        System.out.println(request.getParameter("id"));
+		        System.out.println("update dosid:"+request.getParameter("id"));
 		        Integer id = Integer.parseInt(request.getParameter("id"));
 		        String dosName=request.getParameter("dos_name");
 		        String dosAddr=request.getParameter("dos_addr");

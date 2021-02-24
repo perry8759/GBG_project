@@ -55,8 +55,8 @@ public class DOSACT_MAIN_INSERT {
 	    //活動賽制
 	    ACT_RULE act_rule=new ACT_RULE(null,"單淘汰");
 	    //活動文件
-	    ACT_RFORM act_rform=new ACT_RFORM(null,null);
-	    ACT_RFORM act_rform1=new ACT_RFORM(null,null);
+	    ACT_RFORM act_rform=new ACT_RFORM(null);
+	    ACT_RFORM act_rform1=new ACT_RFORM(null);
 	    Set<ACT_RFORM> set_form = new HashSet<>(Arrays.asList(act_rform,act_rform1));
 	    //活動問答
 	    ACT_QES act_qes=new ACT_QES(null,1,null);

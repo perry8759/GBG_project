@@ -9,7 +9,7 @@
 <title>留言</title>
 </head>
 <body>
-	<jsp:include page="/fragment/topMVC.jsp" />
+	<jsp:include page="/fragment/topMVC2.jsp" />
 	<div class="container col-md-5">
 		<div class="card">
 			<div class="card-body">

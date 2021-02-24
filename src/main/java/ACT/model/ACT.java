@@ -24,13 +24,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import DOS.model.DOS;
-import DOS.model.DOS_PICTURE;
 import DOS.model.DOS_SPORT;
 import course.model.MatchBean;
 import course.model.MatchTeamBean;
 import member.model.MemberBean;
-
-
 
 @Entity
 @Table(name="ACT")

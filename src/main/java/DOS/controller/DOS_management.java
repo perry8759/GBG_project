@@ -18,7 +18,7 @@ import DOS.service.impl.DOSServiceImpl;
 /**
  * Servlet implementation class DOS_management
  */
-@WebServlet("/")
+@WebServlet("/DOS")
 public class DOS_management extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

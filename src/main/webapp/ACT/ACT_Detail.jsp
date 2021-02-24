@@ -135,10 +135,34 @@ a.booking {
 				</div>
 			</div>
 			<div class="Tr">
+				<h2 class="Td Title">主辦方名稱</h2>
+				<div class="Td">
+					<div class="Content">
+						<c:out value="${ActBean.MEMBER_ID}" />
+					</div>
+				</div>
+			</div>
+			<div class="Tr">
+				<h2 class="Td Title">球類類型</h2>
+				<div class="Td">
+					<div class="Content">
+						<c:out value="${ActBean.dos_sport.DOS_SPORT_NAME}" />
+					</div>
+				</div>
+			</div>
+			<div class="Tr">
 				<h2 class="Td Title">報名費用</h2>
 				<div class="Td">
 					<div class="Content">
 						<c:out value="${ActBean.ACT_PAY}" />
+					</div>
+				</div>
+			</div>
+			<div class="Tr">
+				<h2 class="Td Title">場地</h2>
+				<div class="Td">
+					<div class="Content">
+						<c:out value="${ActBean.dos_id.DOS_NAME}" />
 					</div>
 				</div>
 			</div>
@@ -188,6 +212,19 @@ a.booking {
 						<div class="CTitle">活動結束時間</div>
 						<div class="CContent">
 							<c:out value="${ActBean.ACT_RUN_C}" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="MainItem">
+			<div class="Tr">
+				<div class="Td">
+					<div class="Content">
+						<div class="CTitle">報名簡章</div>
+						<div class="CContent">
+							<a>文件下載</a>
+<%-- 							<c:out value="${ActBean.ACT_MAX_TEAM}" /> --%>
 						</div>
 					</div>
 				</div>

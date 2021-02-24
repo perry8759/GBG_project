@@ -11,6 +11,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import ACT.model.ACT_QES;
 import DOS.dao.DOSDao;
 import DOS.model.DOS;
 import DOS.model.DOS_PICTURE;
@@ -149,6 +150,39 @@ public class DOSDaoImpl implements DOSDao{
 		dos_sport.setDos(null);
 		session.delete(dos_sport);
 		
+	}
+	@Override
+	public DOS get(Integer dos_id) {
+		DOS dos = null;
+		Session session = factory.getCurrentSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			dos = (DOS) session.get(DOS.class, dos_id);
+			tx.commit();
+		} catch (Exception e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		}
+		return dos;
+	}
+	
+	@Override
+	public DOS_SPORT getSportById(Integer dos_sport_id) {
+		DOS_SPORT sport= null;
+		Session session = factory.getCurrentSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			sport = (DOS_SPORT) session.get(DOS_SPORT.class, dos_sport_id);
+			tx.commit();
+		} catch (Exception e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		}
+		return sport;
 	}
 	
 
