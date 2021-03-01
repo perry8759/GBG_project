@@ -20,7 +20,7 @@ import com.sun.istack.NotNull;
 public class ProductStausBean implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer product_st;
+	private Integer product_stid;
 
 	@NotNull
 	private String product_st_name;
@@ -34,27 +34,27 @@ public class ProductStausBean implements Serializable {
 	public ProductStausBean() {
 	}
 
-	public ProductStausBean(Integer product_st, String product_st_name, Set<ProductBean> productBean) {
+	public ProductStausBean(Integer product_stid, String product_st_name, Set<ProductBean> productBean) {
 		super();
-		this.product_st = product_st;
+		this.product_stid = product_stid;
 		this.product_st_name = product_st_name;
 		this.productBean = productBean;
 	}
 
-	public Integer getProduct_st() {
-		return product_st;
+	public Integer getProduct_stid() {
+		return product_stid;
 	}
 
-	public void setProduct_st(Integer product_st) {
-		this.product_st = product_st;
+	public void setProduct_stid(Integer product_stid) {
+		this.product_stid = product_stid;
 	}
 
-	public String getProduct_name() {
+	public String getProduct_st_name() {
 		return product_st_name;
 	}
 
-	public void setProduct_name(String product_name) {
-		this.product_st_name = product_name;
+	public void setProduct_st_name(String product_st_name) {
+		this.product_st_name = product_st_name;
 	}
 
 	public Set<ProductBean> getProductBean() {

@@ -22,10 +22,10 @@ public class ProductPicBean implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer product_pic_id;
 
-	////單向一對多，可以藉由商品詳細資料找到商品照片，無法從照片找到商品
-//	@ManyToOne(cascade = CascadeType.ALL)
-//	@JoinColumn(name = "product_detail_id")
-//	private ProductDetailBean productDetailBean;
+	//雙向一對多，可以藉由商品ID找到商品照片
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "product_id")
+	private ProductBean productBean;
 
 	@NotNull
 	private Blob product_pic_img;
@@ -35,13 +35,21 @@ public class ProductPicBean implements Serializable {
 	public ProductPicBean() {
 	}
 
-	public ProductPicBean(Integer product_pic_id, Blob product_pic_img,
+	public ProductPicBean(Integer product_pic_id, ProductBean productBean, Blob product_pic_img,
 			Integer product_pic_seq) {
 		super();
 		this.product_pic_id = product_pic_id;
-//		this.productDetailBean = productDetailBean;
+		this.productBean = productBean;
 		this.product_pic_img = product_pic_img;
 		this.product_pic_seq = product_pic_seq;
+	}
+
+	public ProductBean getProductBean() {
+		return productBean;
+	}
+
+	public void setProductBean(ProductBean productBean) {
+		this.productBean = productBean;
 	}
 
 	public Integer getProduct_pic_id() {

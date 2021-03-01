@@ -52,10 +52,10 @@ public class ProductDetailBean implements Serializable {
 	@JoinColumn(name = "product_detail_id")
 	private Set<OrderDetailsBean> orderDetailsBean = new LinkedHashSet<>();
 	
-	//單向一對多，可以藉由商品詳細資料找到商品照片
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "product_detail_id")
-	private Set<ProductPicBean> productPicBean = new LinkedHashSet<>();
+	//單向一對多，可以藉由商品詳細資料找到商品照片，改由商品找照片
+//	@OneToMany(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "product_detail_id")
+//	private Set<ProductPicBean> productPicBean = new LinkedHashSet<>();
 
 	// 要有預設建構子
 	public ProductDetailBean() {
@@ -72,7 +72,7 @@ public class ProductDetailBean implements Serializable {
 		this.product_stock = product_stock;
 //		this.shoppingCartBean = shoppingCartBean;
 		this.orderDetailsBean = orderDetailsBean;
-		this.productPicBean = productPicBean;
+//		this.productPicBean = productPicBean;
 	}
 
 	public Integer getProduct_detail_id() {
@@ -131,12 +131,12 @@ public class ProductDetailBean implements Serializable {
 		this.orderDetailsBean = orderDetailsBean;
 	}
 
-	public Set<ProductPicBean> getProductPicBean() {
-		return productPicBean;
-	}
-
-	public void setProductPicBean(Set<ProductPicBean> productPicBean) {
-		this.productPicBean = productPicBean;
-	}
+//	public Set<ProductPicBean> getProductPicBean() {
+//		return productPicBean;
+//	}
+//
+//	public void setProductPicBean(Set<ProductPicBean> productPicBean) {
+//		this.productPicBean = productPicBean;
+//	}
 
 }
